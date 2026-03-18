@@ -45,6 +45,14 @@ SAFE_DAILY_LIMITS = {
     "loperamide":           16,
     "bismuth subsalicylate": 4200, # in mg; watch salicylate load
     "melatonin":            10,    # conservative; no formal FDA monograph
+    #adding more to the list based on common OTC ingredients and supplements
+    "Diclofenac":           150,  # OTC topical dose; oral Rx doses can be higher
+    "Fish oil":             3000,   # typical supplemental dose; no formal FDA limit
+    "Vitamin C":            2000,   # upper limit for adults
+    "Vitamin D":            4000,   # upper limit for adults
+    "Zinc":                 40,          # upper limit for adults
+    "Echinacea":            0,      # no established safe limit; use with caution
+    "Diphenhydramine":      300, # typical OTC max dose; higher doses can be dangerous
 }
 
 # ── Ingredient aliases (handle common name variants) ─────────────────────────
@@ -641,12 +649,14 @@ if __name__ == "__main__":
     import json
 
     TEST_PRODUCTS = ["NyQuil", "Tylenol Extra Strength", "Advil"]
+    TEST_PRODUCTS_1 = ["Tylenol", "Aleve", "Motrin", "Benadryl", "ZzzQuil", "Pepto-Bismol", "fish oil", "Voltaren"]  # for more edge cases
+    TEST_PRODUCTS_2 = ["Tagamet HB", "Herbal Supp", "Grapefruit Juice", "Mylanta", "Bengay", "Sudafed"]
     print("=" * 60)
     print("TOOL 1 — resolve_brand_to_ingredients")
     print("=" * 60)
 
     resolved = []
-    for p in TEST_PRODUCTS:
+    for p in TEST_PRODUCTS_2:
         result = resolve_brand_to_ingredients(p)
         resolved.append(result)
         print(f"\n{p}:")
