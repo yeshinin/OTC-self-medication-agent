@@ -1,0 +1,498 @@
+{
+  "tool1": [
+    {
+      "product": "NyQuil",
+      "data": [
+        {
+          "ingredient": "chlorpheniramine",
+          "amount_per_dose_mg": 2.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "dextromethorphan",
+          "amount_per_dose_mg": 15.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "guaifenesin",
+          "amount_per_dose_mg": 100.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "phenylephrine",
+          "amount_per_dose_mg": 5.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'NyQuil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"NyQuil\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "DayQuil",
+      "data": [
+        {
+          "ingredient": "chlorpheniramine",
+          "amount_per_dose_mg": 2.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "dextromethorphan",
+          "amount_per_dose_mg": 15.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "guaifenesin",
+          "amount_per_dose_mg": 100.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "phenylephrine",
+          "amount_per_dose_mg": 5.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'DayQuil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"DayQuil\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Theraflu",
+      "data": [
+        {
+          "ingredient": "acetaminophen",
+          "amount_per_dose_mg": 1000.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "dextromethorphan",
+          "amount_per_dose_mg": 30.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'Theraflu'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Theraflu\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Robitussin",
+      "data": [
+        {
+          "ingredient": "usp",
+          "amount_per_dose_mg": 20.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'Robitussin'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Robitussin\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Tylenol",
+      "data": [
+        {
+          "ingredient": "acetaminophen",
+          "amount_per_dose_mg": 500.0,
+          "rxcui": "161"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Tylenol' (RxCUI 202433)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Tylenol'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Tylenol\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Advil",
+      "data": [
+        {
+          "ingredient": "ibuprofen",
+          "amount_per_dose_mg": 125.0,
+          "rxcui": "5640"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Advil' (RxCUI 153010)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/153010/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Advil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Advil\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Aleve",
+      "data": [
+        {
+          "ingredient": "naproxen sodium",
+          "amount_per_dose_mg": 220.0,
+          "rxcui": "7258"
+        },
+        {
+          "ingredient": "naproxen sodium",
+          "amount_per_dose_mg": 220.0,
+          "rxcui": "142442"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Aleve' (RxCUI 215101)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/215101/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Aleve'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Aleve\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Aspirin",
+      "data": [
+        {
+          "ingredient": "aspirin",
+          "amount_per_dose_mg": 81.0,
+          "rxcui": "1191"
+        },
+        {
+          "ingredient": "acetylsalicylate sodium",
+          "amount_per_dose_mg": null,
+          "rxcui": "314293"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Aspirin' (RxCUI 1191)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1191/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Aspirin'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Aspirin\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "~ PARTIAL (no dose amounts)"
+    },
+    {
+      "product": "Benadryl",
+      "data": [
+        {
+          "ingredient": "diphenhydramine",
+          "amount_per_dose_mg": 25.0,
+          "rxcui": "3498",
+          "note": "estimated from default OTC strength"
+        },
+        {
+          "ingredient": "diphenhydramine",
+          "amount_per_dose_mg": 25.0,
+          "rxcui": "1362",
+          "note": "estimated from default OTC strength"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Benadryl' (RxCUI 203457)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/203457/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Benadryl'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Benadryl\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "ZzzQuil",
+      "data": [
+        {
+          "ingredient": "diphenhydramine",
+          "amount_per_dose_mg": 25.0,
+          "rxcui": "3498",
+          "note": "estimated from default OTC strength"
+        },
+        {
+          "ingredient": "diphenhydramine",
+          "amount_per_dose_mg": 25.0,
+          "rxcui": "1362",
+          "note": "estimated from default OTC strength"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'ZzzQuil' (RxCUI 1233547)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1233547/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'ZzzQuil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"ZzzQuil\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Pepto-Bismol",
+      "data": [
+        {
+          "ingredient": "bismuth subsalicylate",
+          "amount_per_dose_mg": 262.0,
+          "rxcui": "19478"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Pepto-Bismol' (RxCUI 54536)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/54536/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Pepto-Bismol'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Pepto-Bismol\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "Imodium",
+      "data": [
+        {
+          "ingredient": "loperamide",
+          "amount_per_dose_mg": 2.0,
+          "rxcui": "6468",
+          "note": "estimated from default OTC strength"
+        },
+        {
+          "ingredient": "loperamide",
+          "amount_per_dose_mg": 2.0,
+          "rxcui": "82038",
+          "note": "estimated from default OTC strength"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Imodium' (RxCUI 151889)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/151889/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Imodium'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Imodium\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "\u2713 PASS"
+    },
+    {
+      "product": "melatonin",
+      "data": [
+        {
+          "ingredient": "melatonin",
+          "amount_per_dose_mg": null,
+          "rxcui": "6711"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'melatonin' (RxCUI 6711)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/6711/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'melatonin'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"melatonin\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "~ PARTIAL (no dose amounts)"
+    },
+    {
+      "product": "fish oil",
+      "data": [
+        {
+          "ingredient": "fish oils",
+          "amount_per_dose_mg": null,
+          "rxcui": "4419"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'fish oil' (RxCUI 4419)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/4419/allrelated.json"
+        }
+      ],
+      "warning": null,
+      "status": "~ PARTIAL (no dose amounts)"
+    },
+    {
+      "product": "vitamin C",
+      "data": [
+        {
+          "ingredient": "ascorbic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1151"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'vitamin C' (RxCUI 1151)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1151/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'vitamin C'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"vitamin C\"&limit=1"
+        }
+      ],
+      "warning": null,
+      "status": "~ PARTIAL (no dose amounts)"
+    }
+  ],
+  "tool2": {
+    "combo_tests": [
+      {
+        "label": "Acetaminophen + Alcohol (must detect)",
+        "ok": true,
+        "found": [
+          {
+            "ingredient_a": "acetaminophen",
+            "ingredient_b": "ethanol",
+            "severity": "high",
+            "description": "Chronic alcohol use (3+ drinks/day) combined with acetaminophen significantly increases risk of hepatotoxicity. FDA requires alcohol warning on all acetaminophen OTC labels.",
+            "management": "Avoid acetaminophen or limit to <2g/day if drinking regularly."
+          }
+        ]
+      },
+      {
+        "label": "Ibuprofen + Aspirin (must detect)",
+        "ok": true,
+        "found": [
+          {
+            "ingredient_a": "ibuprofen",
+            "ingredient_b": "aspirin",
+            "severity": "moderate",
+            "description": "Ibuprofen can interfere with aspirin's antiplatelet effect when taken within 30 minutes before or 8 hours after aspirin. Both increase GI bleeding risk.",
+            "management": "Take aspirin at least 30 min before ibuprofen. Consider alternatives."
+          }
+        ]
+      },
+      {
+        "label": "Dual NSAIDs: Ibuprofen + Naproxen (must detect)",
+        "ok": true,
+        "found": [
+          {
+            "ingredient_a": "ibuprofen",
+            "ingredient_b": "naproxen sodium",
+            "severity": "high",
+            "description": "Two NSAIDs taken together do not provide additional pain relief but significantly increase risk of GI ulcers, bleeding, and kidney damage.",
+            "management": "Never combine two NSAIDs. Use one or the other."
+          }
+        ]
+      },
+      {
+        "label": "Diphenhydramine + Alcohol (must detect)",
+        "ok": true,
+        "found": [
+          {
+            "ingredient_a": "diphenhydramine",
+            "ingredient_b": "ethanol",
+            "severity": "high",
+            "description": "Diphenhydramine (found in Benadryl, NyQuil, ZzzQuil, many sleep aids) combined with alcohol causes additive CNS depression: extreme drowsiness, impaired coordination, risk of respiratory depression.",
+            "management": "Avoid alcohol entirely when taking diphenhydramine."
+          }
+        ]
+      },
+      {
+        "label": "Safe pair: Loratadine + Ibuprofen (expect none/low)",
+        "ok": true,
+        "found": []
+      }
+    ],
+    "full_pool": [
+      {
+        "ingredient_a": "acetaminophen",
+        "ingredient_b": "ethanol",
+        "severity": "high",
+        "description": "Chronic alcohol use (3+ drinks/day) combined with acetaminophen significantly increases risk of hepatotoxicity. FDA requires alcohol warning on all acetaminophen OTC labels.",
+        "management": "Avoid acetaminophen or limit to <2g/day if drinking regularly."
+      },
+      {
+        "ingredient_a": "ibuprofen",
+        "ingredient_b": "aspirin",
+        "severity": "moderate",
+        "description": "Ibuprofen can interfere with aspirin's antiplatelet effect when taken within 30 minutes before or 8 hours after aspirin. Both increase GI bleeding risk.",
+        "management": "Take aspirin at least 30 min before ibuprofen. Consider alternatives."
+      },
+      {
+        "ingredient_a": "ibuprofen",
+        "ingredient_b": "naproxen sodium",
+        "severity": "high",
+        "description": "Two NSAIDs taken together do not provide additional pain relief but significantly increase risk of GI ulcers, bleeding, and kidney damage.",
+        "management": "Never combine two NSAIDs. Use one or the other."
+      },
+      {
+        "ingredient_a": "diphenhydramine",
+        "ingredient_b": "ethanol",
+        "severity": "high",
+        "description": "Diphenhydramine (found in Benadryl, NyQuil, ZzzQuil, many sleep aids) combined with alcohol causes additive CNS depression: extreme drowsiness, impaired coordination, risk of respiratory depression.",
+        "management": "Avoid alcohol entirely when taking diphenhydramine."
+      },
+      {
+        "ingredient_a": "aspirin",
+        "ingredient_b": "bismuth subsalicylate",
+        "severity": "moderate",
+        "description": "Bismuth subsalicylate (Pepto-Bismol) contains salicylate. Combined with aspirin, total salicylate load can cause toxicity, especially in children (Reye's syndrome risk).",
+        "management": "Avoid combining. Do not give either to children with viral illness."
+      }
+    ]
+  },
+  "tool3": {
+    "scenarios": [
+      {
+        "label": "Theraflu (x4) \u2014 should flag acetaminophen over limit",
+        "ok": true
+      },
+      {
+        "label": "Theraflu (x2) + Tylenol (x3) \u2014 should flag acetaminophen",
+        "ok": true
+      },
+      {
+        "label": "Advil (x3) + Aleve (x4) \u2014 should flag naproxen",
+        "ok": true
+      },
+      {
+        "label": "Single Benadryl (x1) \u2014 should be within limits",
+        "ok": true
+      }
+    ]
+  }
+}
