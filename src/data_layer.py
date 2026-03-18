@@ -45,14 +45,6 @@ SAFE_DAILY_LIMITS = {
     "loperamide":           16,
     "bismuth subsalicylate": 4200, # in mg; watch salicylate load
     "melatonin":            10,    # conservative; no formal FDA monograph
-    #adding more to the list based on common OTC ingredients and supplements
-    "Diclofenac":           150,  # OTC topical dose; oral Rx doses can be higher
-    "Fish oil":             3000,   # typical supplemental dose; no formal FDA limit
-    "Vitamin C":            2000,   # upper limit for adults
-    "Vitamin D":            4000,   # upper limit for adults
-    "Zinc":                 40,          # upper limit for adults
-    "Echinacea":            0,      # no established safe limit; use with caution
-    "Diphenhydramine":      300, # typical OTC max dose; higher doses can be dangerous
 }
 
 # ── Ingredient aliases (handle common name variants) ─────────────────────────
@@ -68,6 +60,35 @@ INGREDIENT_ALIASES = {
     "dph": "diphenhydramine",
     "dxm": "dextromethorphan",
     "pse": "pseudoephedrine",
+    # Salt form → base ingredient normalization for interaction lookup
+    "diphenhydramine hydrochloride": "diphenhydramine",
+    "loperamide hydrochloride":      "loperamide",
+    "cetirizine hydrochloride":      "cetirizine",
+    "pseudoephedrine hydrochloride": "pseudoephedrine",
+    "dextromethorphan hydrobromide": "dextromethorphan",
+    "dextromethorphan hbr":          "dextromethorphan",
+    "chlorpheniramine maleate":      "chlorpheniramine",
+    "phenylephrine hcl":             "phenylephrine",
+}
+
+# ── Default per-unit doses for common OTC products ────────────────────────────
+# Used as fallback when FDA label regex finds no dose amount.
+# Only applied when ingredient is also confirmed in openfda.substance_name.
+# Source: standard OTC package labeling.
+DEFAULT_UNIT_DOSES = {
+    "acetaminophen":                325.0,   # standard regular-strength
+    "ibuprofen":                    200.0,   # standard Advil/Motrin OTC
+    "aspirin":                      325.0,   # standard Bayer
+    "naproxen sodium":              220.0,   # standard Aleve
+    "diphenhydramine":               25.0,   # standard Benadryl
+    "diphenhydramine hydrochloride": 25.0,   # same drug, HCl salt form
+    "loratadine":                    10.0,   # standard Claritin
+    "cetirizine":                    10.0,   # standard Zyrtec
+    "cetirizine hydrochloride":      10.0,   # same drug, HCl salt form
+    "loperamide":                     2.0,   # standard Imodium
+    "loperamide hydrochloride":       2.0,   # same drug, HCl salt form
+    "doxylamine succinate":           6.25,  # NyQuil sleep aid component
+    "pseudoephedrine hydrochloride":  30.0,  # standard Sudafed
 }
 
 
@@ -153,6 +174,14 @@ def resolve_brand_to_ingredients(product_name: str) -> dict:
                 match = fda_by_name.get(ing["ingredient"])
                 if match:
                     ing["amount_per_dose_mg"] = match.get("amount_per_dose_mg")
+                # Final fallback: if dose still unknown, try DEFAULT_UNIT_DOSES
+                # This covers products where OpenFDA label text has no numeric dose
+                # but we know the standard OTC strength (Benadryl 25mg, Imodium 2mg)
+                if ing["amount_per_dose_mg"] is None:
+                    default = DEFAULT_UNIT_DOSES.get(ing["ingredient"])
+                    if default:
+                        ing["amount_per_dose_mg"] = default
+                        ing["note"] = "estimated from default OTC strength"
 
     elif not ingredients:
         warning = (
@@ -190,8 +219,12 @@ def _rxnorm_rxcui_to_ingredients(rxcui: str) -> list[dict]:
     """
     Walks the RxNorm graph from a product RxCUI to its ingredient (IN) concepts.
     Returns list of {rxcui, name}.
-    Note: RxNorm interaction API was discontinued Jan 2024 — we only use it
-    here for brand→ingredient resolution, which still works fine.
+
+    Key filter: only return IN/PIN entries with no " / " in the name.
+    The slash pattern marks multi-ingredient combo products that RxNorm returns
+    as related concepts — e.g. "aspirin / caffeine / codeine". We want only the
+    atomic ingredients of THIS product, not every combo containing it.
+    MIN entries are excluded entirely — they are combo product names.
     """
     url = f"{RXNORM_BASE}/rxcui/{rxcui}/allrelated.json"
     try:
@@ -204,13 +237,16 @@ def _rxnorm_rxcui_to_ingredients(rxcui: str) -> list[dict]:
         )
         ingredients = []
         for group in concept_groups:
-            # IN = ingredient, PIN = precise ingredient, MIN = multiple ingredients
-            if group.get("tty") in ("IN", "PIN", "MIN"):
+            # Only IN and PIN — not MIN (combo product names)
+            if group.get("tty") in ("IN", "PIN"):
                 for prop in group.get("conceptProperties", []):
-                    ingredients.append({
-                        "rxcui": prop["rxcui"],
-                        "name":  prop["name"].lower(),
-                    })
+                    name = prop["name"].lower()
+                    # Single ingredients never contain " / "
+                    if " / " not in name:
+                        ingredients.append({
+                            "rxcui": prop["rxcui"],
+                            "name":  name,
+                        })
         return ingredients
     except Exception:
         return []
@@ -249,40 +285,110 @@ def _openfda_label_by_brand(brand_name: str) -> dict | None:
 def _parse_fda_active_ingredients(label: dict) -> list[dict]:
     """
     Extracts active ingredients + amounts from an OpenFDA label record.
-    The 'active_ingredient' field is a list of free-text strings like:
-      ["Active ingredient (in each tablet)\nAcetaminophen 500 mg\nPurpose\nPain reliever"]
-    We extract ingredient names and numeric mg values with basic parsing.
-    For Phase 1 this is good enough; a more robust NLP parse can be added later.
+
+    Improvements:
+    - Handles g, mcg, iu, % units in addition to mg
+    - Checks active_ingredient_table field as well
+    - Deduplicates results — some labels list same ingredient twice
+    - Fallback to DEFAULT_UNIT_DOSES when regex finds nothing, validated
+      against openfda.substance_name to avoid false positives
+    - IU conversion handled for common vitamins
     """
     import re
     results = []
-    raw_sections = label.get("active_ingredient", [])
+
+    # Check both label fields — some products use one, some use both
+    raw_sections = (
+        label.get("active_ingredient", []) +
+        label.get("active_ingredient_table", [])
+    )
+
+    dose_regex = re.compile(
+        r"([a-z][a-z0-9\s\-]+?)\s+([\d\.,]+)\s*(mg|g|mcg|iu|%)",
+        re.IGNORECASE
+    )
+
+    # IU to mg conversions for common OTC vitamins
+    IU_TO_MG = {
+        "vitamin d": 0.000025,
+        "vitamin e": 0.000667,
+        "vitamin a": 0.000300,
+    }
 
     for section in raw_sections:
-        # Find lines that look like "IngredientName NNN mg"
-        lines = section.replace("\n", " ").split("  ")
-        for line in lines:
-            # Match patterns like "Acetaminophen 500 mg" or "ibuprofen 200mg"
-            match = re.search(
-                r"([a-zA-Z][a-zA-Z\s\-]+?)\s+([\d.]+)\s*mg",
-                line,
-                re.IGNORECASE
-            )
-            if match:
-                name = match.group(1).strip().lower()
-                # Remove noise words
-                for noise in ["active ingredient", "purpose", "each", "tablet",
-                              "capsule", "softgel", "liquid"]:
-                    name = name.replace(noise, "").strip()
-                name = INGREDIENT_ALIASES.get(name, name)
-                if len(name) > 2:
+        clean = re.sub(r"\s+", " ", section).strip()
+        matches = list(dose_regex.finditer(clean))
+        found_in_section = bool(matches)
+
+        for match in matches:
+            name   = match.group(1).strip().lower()
+            amount = float(match.group(2).replace(",", ""))
+            unit   = match.group(3).lower()
+
+            # Unit normalisation to mg
+            if unit == "g":
+                amount *= 1000
+            elif unit == "mcg":
+                amount /= 1000
+            elif unit == "iu":
+                iu_factor = next(
+                    (v for k, v in IU_TO_MG.items() if k in name), None
+                )
+                if iu_factor:
+                    amount *= iu_factor
+                # else: keep raw IU value, note added below
+            elif unit == "%":
+                continue   # percentage concentrations not useful for oral dose calc
+
+            # Strip noise words
+            for noise in ["active ingredient", "purpose", "in each",
+                          "tablet", "capsule", "softgel", "liquid",
+                          "each", "per"]:
+                name = name.replace(noise, "").strip()
+
+            name = INGREDIENT_ALIASES.get(name, name)
+
+            if len(name) > 2:
+                entry = {
+                    "ingredient":         name,
+                    "amount_per_dose_mg": amount,
+                    "rxcui":              None,
+                }
+                if unit == "iu" and not any(k in name for k in IU_TO_MG):
+                    entry["note"] = "amount is in IU not mg — verify manually"
+                results.append(entry)
+
+        # Fallback: regex found nothing in this section.
+        # Only use DEFAULT_UNIT_DOSES if ingredient is confirmed in the
+        # structured openfda.substance_name field — prevents false positives
+        # from warning text that mentions other drug names.
+        if not found_in_section:
+            trusted = {
+                s.lower()
+                for s in label.get("openfda", {}).get("substance_name", [])
+            }
+            clean_lower = clean.lower()
+            for ing_name, default_dose in DEFAULT_UNIT_DOSES.items():
+                in_text    = ing_name in clean_lower
+                in_trusted = ing_name in trusted or any(
+                    ing_name in s for s in trusted
+                )
+                if in_text and in_trusted:
                     results.append({
-                        "ingredient": name,
-                        "amount_per_dose_mg": float(match.group(2)),
-                        "rxcui": None,
+                        "ingredient":         ing_name,
+                        "amount_per_dose_mg": default_dose,
+                        "rxcui":              None,
+                        "note":               "estimated from default OTC strength",
                     })
 
-    return results
+    # Deduplicate — keep first occurrence of each ingredient name
+    seen, unique = set(), []
+    for r in results:
+        if r["ingredient"] not in seen:
+            seen.add(r["ingredient"])
+            unique.append(r)
+
+    return unique
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -649,14 +755,12 @@ if __name__ == "__main__":
     import json
 
     TEST_PRODUCTS = ["NyQuil", "Tylenol Extra Strength", "Advil"]
-    TEST_PRODUCTS_1 = ["Tylenol", "Aleve", "Motrin", "Benadryl", "ZzzQuil", "Pepto-Bismol", "fish oil", "Voltaren"]  # for more edge cases
-    TEST_PRODUCTS_2 = ["Tagamet HB", "Herbal Supp", "Grapefruit Juice", "Mylanta", "Bengay", "Sudafed"]
     print("=" * 60)
     print("TOOL 1 — resolve_brand_to_ingredients")
     print("=" * 60)
 
     resolved = []
-    for p in TEST_PRODUCTS_2:
+    for p in TEST_PRODUCTS:
         result = resolve_brand_to_ingredients(p)
         resolved.append(result)
         print(f"\n{p}:")
