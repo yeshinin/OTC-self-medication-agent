@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTC Safe — Medication Risk Checker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #1a1a18;
+    --ink-mid:   #4a4a44;
+    --ink-soft:  #8a8a80;
+    --paper:     #f5f2eb;
+    --paper-mid: #ede9df;
+    --paper-dark:#e0dbd0;
+    --red:       #c0392b;
+    --red-soft:  #fdf0ee;
+    --amber:     #d4820a;
+    --amber-soft:#fdf6e3;
+    --green:     #2d7a4f;
+    --green-soft:#edf7f2;
+    --blue:      #1a5a8a;
+    --blue-soft: #eef4fb;
+    --rule:      rgba(26,26,24,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── Layout ── */
+  .shell {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+  }
+  .brand em { font-style: italic; color: var(--red); }
+  .tagline {
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .us-notice {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-left: auto;
+  }
+  .phase-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    background: var(--paper-dark);
+    color: var(--ink-mid);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Sidebar ── */
+  aside {
+    border-right: 1px solid var(--rule);
+    padding: 28px 20px;
+    background: var(--paper-mid);
+    overflow-y: auto;
+  }
+  .sidebar-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .example-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mid);
+    cursor: pointer;
+    line-height: 1.45;
+    margin-bottom: 5px;
+    transition: all 0.15s;
+  }
+  .example-btn:hover {
+    background: var(--paper);
+    border-color: var(--rule);
+    color: var(--ink);
+  }
+  .example-btn .risk-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 7px;
+    vertical-align: middle;
+    position: relative; top: -1px;
+  }
+  .dot-high   { background: var(--red); }
+  .dot-mod    { background: var(--amber); }
+  .dot-none   { background: var(--green); }
+
+  .disclaimer {
+    margin-top: 24px;
+    padding: 12px;
+    background: var(--paper);
+    border-radius: 6px;
+    border: 1px solid var(--rule);
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .disclaimer strong { color: var(--ink-mid); }
+
+  /* ── Main ── */
+  main {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    gap: 24px;
+    overflow-y: auto;
+  }
+
+  /* ── Input area ── */
+  .input-area {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .input-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 10px;
+  }
+  textarea {
+    width: 100%;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    resize: none;
+    height: 90px;
+    line-height: 1.55;
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  textarea::placeholder { color: var(--ink-soft); }
+  textarea:focus { border-color: var(--ink-mid); }
+
+  .input-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+  .input-hint {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .analyze-btn {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 7px;
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .analyze-btn:hover { background: #2e2e2a; }
+  .analyze-btn:disabled { background: var(--paper-dark); color: var(--ink-soft); cursor: not-allowed; }
+
+  /* ── Loading ── */
+  .loading {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink-mid);
+    font-size: 14px;
+  }
+  .loading.active { display: flex; }
+  .spinner {
+    width: 18px; height: 18px;
+    border: 2px solid var(--paper-dark);
+    border-top-color: var(--ink-mid);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Report ── */
+  .report {
+    display: none;
+    animation: fadeUp 0.3s ease;
+  }
+  .report.visible { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .report-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 16px;
+  }
+  .risk-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .risk-high     { background: var(--red-soft);   color: var(--red);   }
+  .risk-moderate { background: var(--amber-soft);  color: var(--amber); }
+  .risk-low      { background: var(--green-soft);  color: var(--green); }
+  .risk-none     { background: var(--green-soft);  color: var(--green); }
+
+  .risk-icon { font-size: 16px; }
+
+  .report-summary {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ink);
+    flex: 1;
+  }
+
+  .section {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  .section-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  /* Details */
+  .detail-item {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .detail-finding {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .detail-explanation {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .detail-source {
+    margin-top: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  /* What to do */
+  .what-to-do-text {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* Pharmacist alert */
+  .pharmacist-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--blue-soft);
+    border: 1px solid rgba(26,90,138,0.15);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 20px;
+  }
+  .pharmacist-icon { font-size: 20px; flex-shrink: 0; }
+  .pharmacist-text {
+    font-size: 14px;
+    color: var(--blue);
+    line-height: 1.55;
+  }
+
+  /* Sources */
+  .sources-list { list-style: none; }
+  .source-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13px;
+  }
+  .source-item:last-child { border-bottom: none; }
+  .source-name { color: var(--ink-mid); font-weight: 500; }
+  .source-url  {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    word-break: break-all;
+  }
+  .source-url a { color: var(--blue); text-decoration: none; }
+  .source-url a:hover { text-decoration: underline; }
+
+  /* Extracted pills */
+  .extracted-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .pill {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--paper-dark);
+    color: var(--ink-mid);
+    font-weight: 500;
+  }
+  .pill.substance { background: var(--amber-soft); color: var(--amber); }
+
+  /* Download btn */
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-top: 20px;
+  }
+  .download-btn:hover { background: var(--paper-mid); color: var(--ink); }
+
+  /* Error state */
+  .error-box {
+    display: none;
+    background: var(--red-soft);
+    border: 1px solid rgba(192,57,43,0.2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--red);
+  }
+  .error-box.visible { display: block; }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .shell { grid-template-columns: 1fr; }
+    aside { display: none; }
+    main { padding: 20px; }
+    header { padding: 14px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header>
+    <div class="brand">OTC<em>Safe</em></div>
+    <div class="tagline">Medication Risk Checker</div>
+    <div class="us-notice">🇺🇸 US medications only</div>
+    <div class="phase-badge">Phase 1 · Research Prototype</div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside>
+    <div class="sidebar-title">Try an example</div>
+
+    <button class="example-btn" onclick="fillExample(this.dataset.q)"
+      data-q="I take Advil three times a day and Aleve twice a day for my back pain">
+      <span class="risk-dot dot-high"></span>Advil + Aleve together
+    </button>
+
+    <button class="example-btn" onclick="fillExample(this.dataset.q)"
+      data-q="I take Theraflu twice a day and Tylenol 3 times a day, and I drink wine every night">
+      <span class="risk-dot dot-high"></span>Theraflu + Tylenol + wine
+    </button>
+
+    <button class="example-btn" onclick="fillExample(this.dataset.q)"
+      data-q="I took a Benadryl this morning, using Dramamine for a boat trip, and plan to take ZzzQuil tonight">
+      <span class="risk-dot dot-high"></span>Benadryl + Dramamine + ZzzQuil
+    </button>
+
+    <button class="example-btn" onclick="fillExample(this.dataset.q)"
+      data-q="For the past 3 days I have been taking Tylenol twice a day. Is that ok?">
+      <span class="risk-dot dot-none"></span>Is my Tylenol dose safe?
+    </button>
+
+    <div class="disclaimer">
+      <strong>🇺🇸 US medications only.</strong> This tool uses RxNorm and OpenFDA, which cover drugs approved and sold in the United States. Non-US brand names (e.g. Calpol, Nurofen, Panadol, Saradon) may not be recognized.<br><br>
+      <strong>Research prototype.</strong> For informational purposes only — not medical advice. Always consult a pharmacist or physician.
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main>
+    <div class="input-area">
+      <div class="input-label">Describe your medications or ask a question</div>
+      <textarea id="query" placeholder="e.g. I take NyQuil every night and Tylenol during the day, and I drink wine most evenings…"></textarea>
+      <div class="input-footer">
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <span id="loading-step">Analyzing…</span>
+        </div>
+        <div class="input-hint" id="input-hint">Ctrl+Enter to submit</div>
+        <button class="analyze-btn" id="analyze-btn" onclick="analyze()">
+          <span>Check for risks</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="error-box" id="error-box"></div>
+
+    <div class="report" id="report">
+
+      <div class="report-header">
+        <div class="report-summary" id="report-summary"></div>
+        <div class="risk-badge" id="risk-badge"></div>
+      </div>
+
+      <!-- Extracted -->
+      <div class="section" id="extracted-section">
+        <div class="section-title">Detected in your message</div>
+        <div class="extracted-row" id="extracted-products"></div>
+      </div>
+
+      <!-- Details -->
+      <div class="section" id="details-section">
+        <div class="section-title">Risk details</div>
+        <div id="details-list"></div>
+      </div>
+
+      <!-- What to do -->
+      <div class="section">
+        <div class="section-title">What to do</div>
+        <div class="what-to-do-text" id="what-to-do"></div>
+      </div>
+
+      <!-- Pharmacist alert -->
+      <div class="pharmacist-alert" id="pharmacist-alert" style="display:none">
+        <div class="pharmacist-icon">⚕</div>
+        <div class="pharmacist-text">
+          <strong>Speak with a pharmacist or doctor</strong> before continuing this combination. A pharmacist can review your full medication list and recommend safer alternatives.
+        </div>
+      </div>
+
+      <!-- Sources -->
+      <div class="section" id="sources-section">
+        <div class="section-title">Sources</div>
+        <ul class="sources-list" id="sources-list"></ul>
+      </div>
+
+      <button class="download-btn" onclick="downloadReport()">
+        ↓ Download report as JSON
+      </button>
+
+    </div><!-- /report -->
+  </main>
+
+</div><!-- /shell -->
+
+<script>
+  const API = 'http://localhost:5000';
+  let lastReport = null;
+  let currentQuery = '';
+
+  // Fill example from sidebar
+  function fillExample(text) {
+    document.getElementById('query').value = text;
+    document.getElementById('query').focus();
+  }
+
+  // Ctrl+Enter shortcut
+  document.getElementById('query').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) analyze();
+  });
+
+  // Loading steps
+  const STEPS = [
+    'Extracting medications…',
+    'Resolving ingredients…',
+    'Checking interactions…',
+    'Synthesizing risk report…',
+  ];
+
+  function showLoading() {
+    const loading = document.getElementById('loading');
+    const hint    = document.getElementById('input-hint');
+    loading.classList.add('active');
+    hint.style.display = 'none';
+    let i = 0;
+    const step = document.getElementById('loading-step');
+    step.textContent = STEPS[0];
+    return setInterval(() => {
+      i = Math.min(i + 1, STEPS.length - 1);
+      step.textContent = STEPS[i];
+    }, 2200);
+  }
+
+  function hideLoading(intervalId) {
+    clearInterval(intervalId);
+    document.getElementById('loading').classList.remove('active');
+    document.getElementById('input-hint').style.display = '';
+  }
+
+  // Risk level config
+  const RISK_CONFIG = {
+    high:     { icon: '🔴', label: 'High Risk',     cls: 'risk-high'     },
+    moderate: { icon: '🟡', label: 'Moderate Risk', cls: 'risk-moderate' },
+    low:      { icon: '🟢', label: 'Low Risk',      cls: 'risk-low'      },
+    none:     { icon: '✅', label: 'No Risk Found', cls: 'risk-none'     },
+  };
+
+  async function analyze() {
+    const query = document.getElementById('query').value.trim();
+    if (!query) return;
+
+    currentQuery = query;
+    const btn = document.getElementById('analyze-btn');
+    btn.disabled = true;
+
+    document.getElementById('report').classList.remove('visible');
+    document.getElementById('error-box').classList.remove('visible');
+
+    const intervalId = showLoading();
+
+    try {
+      const resp = await fetch(`${API}/analyze`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ query }),
+      });
+
+      const data = await resp.json();
+      hideLoading(intervalId);
+
+      if (!resp.ok || data.error) {
+        showError(data.error || 'Something went wrong. Is the server running?');
+        return;
+      }
+
+      lastReport = data;
+      renderReport(data);
+
+    } catch (err) {
+      hideLoading(intervalId);
+      showError('Could not connect to the server. Make sure app.py is running on port 5000.');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  function showError(msg) {
+    const box = document.getElementById('error-box');
+    box.textContent = '⚠ ' + msg;
+    box.classList.add('visible');
+  }
+
+  function renderReport(data) {
+    const risk = data.risk_level || 'none';
+    const cfg  = RISK_CONFIG[risk] || RISK_CONFIG.none;
+
+    // Badge
+    const badge = document.getElementById('risk-badge');
+    badge.className = 'risk-badge ' + cfg.cls;
+    badge.innerHTML = `<span class="risk-icon">${cfg.icon}</span>${cfg.label}`;
+
+    // Summary
+    document.getElementById('report-summary').textContent = data.risk_summary;
+
+    // Extracted
+    const prodEl = document.getElementById('extracted-products');
+    prodEl.innerHTML = '';
+    (data.extracted?.products || []).forEach(p => {
+      const pill = document.createElement('span');
+      pill.className = 'pill';
+      pill.textContent = p;
+      prodEl.appendChild(pill);
+    });
+    (data.extracted?.substances || []).forEach(s => {
+      const pill = document.createElement('span');
+      pill.className = 'pill substance';
+      pill.textContent = s;
+      prodEl.appendChild(pill);
+    });
+    document.getElementById('extracted-section').style.display =
+      (data.extracted?.products?.length || data.extracted?.substances?.length) ? '' : 'none';
+
+    // Details
+    const detailsEl = document.getElementById('details-list');
+    detailsEl.innerHTML = '';
+    const details = data.details || [];
+    document.getElementById('details-section').style.display =
+      details.length ? '' : 'none';
+
+    details.forEach(d => {
+      detailsEl.innerHTML += `
+        <div class="detail-item">
+          <div class="detail-finding">${esc(d.finding)}</div>
+          <div class="detail-explanation">${esc(d.explanation)}</div>
+          <div class="detail-source">Source: ${esc(d.source)}</div>
+        </div>`;
+    });
+
+    // What to do
+    document.getElementById('what-to-do').textContent = data.what_to_do;
+
+    // Pharmacist
+    document.getElementById('pharmacist-alert').style.display =
+      data.see_pharmacist ? '' : 'none';
+
+    // Sources
+    const sourcesEl = document.getElementById('sources-list');
+    sourcesEl.innerHTML = '';
+    (data.sources || []).forEach(s => {
+      sourcesEl.innerHTML += `
+        <li class="source-item">
+          <div class="source-name">${esc(s.name)}</div>
+          ${s.url ? `<div class="source-url"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a></div>` : ''}
+        </li>`;
+    });
+    document.getElementById('sources-section').style.display =
+      (data.sources?.length) ? '' : 'none';
+
+    document.getElementById('report').classList.add('visible');
+    document.getElementById('report').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function downloadReport() {
+    if (!lastReport) return;
+    const blob = new Blob([JSON.stringify({
+      query:  currentQuery,
+      report: lastReport,
+      timestamp: new Date().toISOString(),
+    }, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `otc-report-${Date.now()}.json`;
+    a.click();
+  }
+</script>
+</body>
+</html>
