@@ -1,0 +1,1755 @@
+{
+  "tool1": [
+    {
+      "product": "NyQuil",
+      "status": "\u2713 PASS",
+      "data": [
+        {
+          "ingredient": "chlorpheniramine maleate",
+          "amount_per_dose_mg": 2.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "dextromethorphan hbr",
+          "amount_per_dose_mg": 10.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'NyQuil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"NyQuil\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "DayQuil",
+      "status": "\u2713 PASS",
+      "data": [
+        {
+          "ingredient": "chlorpheniramine maleate",
+          "amount_per_dose_mg": 2.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "dextromethorphan hbr",
+          "amount_per_dose_mg": 10.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'DayQuil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"DayQuil\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Theraflu",
+      "status": "\u2713 PASS",
+      "data": [
+        {
+          "ingredient": "acetaminophen",
+          "amount_per_dose_mg": 1000.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'Theraflu'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Theraflu\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Robitussin",
+      "status": "\u2713 PASS",
+      "data": [
+        {
+          "ingredient": "usp",
+          "amount_per_dose_mg": 20.0,
+          "rxcui": null
+        },
+        {
+          "ingredient": "usp",
+          "amount_per_dose_mg": 20.0,
+          "rxcui": null
+        }
+      ],
+      "sources": [
+        {
+          "name": "OpenFDA label: 'Robitussin'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Robitussin\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Tylenol",
+      "status": "\u2713 PASS",
+      "data": [
+        {
+          "ingredient": "acetaminophen",
+          "amount_per_dose_mg": 500.0,
+          "rxcui": "161"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Tylenol' (RxCUI 202433)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Tylenol'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Tylenol\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Advil",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "ibuprofen",
+          "amount_per_dose_mg": null,
+          "rxcui": "5640"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Advil' (RxCUI 153010)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/153010/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Advil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Advil\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Aleve",
+      "status": "\u2713 PASS",
+      "data": [
+        {
+          "ingredient": "naproxen sodium",
+          "amount_per_dose_mg": 220.0,
+          "rxcui": "7258"
+        },
+        {
+          "ingredient": "naproxen sodium",
+          "amount_per_dose_mg": 220.0,
+          "rxcui": "142442"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Aleve' (RxCUI 215101)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/215101/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Aleve'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Aleve\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Aspirin",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "aspirin",
+          "amount_per_dose_mg": 81.0,
+          "rxcui": "1191"
+        },
+        {
+          "ingredient": "aluminum hydroxide / aspirin / caffeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1006995"
+        },
+        {
+          "ingredient": "aspirin / quinine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007005"
+        },
+        {
+          "ingredient": "aspirin / pyridinolcarbamate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007112"
+        },
+        {
+          "ingredient": "acetiamine / aspirin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007240"
+        },
+        {
+          "ingredient": "aspirin / isosorbide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007337"
+        },
+        {
+          "ingredient": "aspirin / chlorpheniramine / dextromethorphan",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007353"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin / cysteine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007407"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin / diphenylpyraline",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007424"
+        },
+        {
+          "ingredient": "aspirin / chlormezanone",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007472"
+        },
+        {
+          "ingredient": "aspirin / chlorpheniramine / dextromethorphan / phenylpropanolamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007613"
+        },
+        {
+          "ingredient": "aspirin / caffeine / magnesium salicylate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008006"
+        },
+        {
+          "ingredient": "aspirin / methylprednisolone",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008080"
+        },
+        {
+          "ingredient": "aspirin / lithium / quinine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008684"
+        },
+        {
+          "ingredient": "aspirin / caffeine / magnesium carbonate / magnesium salicylate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008791"
+        },
+        {
+          "ingredient": "aspirin / sulfur",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008832"
+        },
+        {
+          "ingredient": "aspirin / chlorpheniramine / pseudoephedrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008877"
+        },
+        {
+          "ingredient": "aspirin / nafronyl",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008988"
+        },
+        {
+          "ingredient": "aspirin / papaverine / phenobarbital",
+          "amount_per_dose_mg": null,
+          "rxcui": "1009038"
+        },
+        {
+          "ingredient": "aspirin / dextromethorphan / phenylephrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1053102"
+        },
+        {
+          "ingredient": "aspirin / dextromethorphan / doxylamine / phenylephrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1053120"
+        },
+        {
+          "ingredient": "aspirin / chlorpheniramine / dextromethorphan / phenylephrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1111420"
+        },
+        {
+          "ingredient": "aspirin / codeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "135095"
+        },
+        {
+          "ingredient": "aspirin / carbidopa",
+          "amount_per_dose_mg": null,
+          "rxcui": "1534422"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / diphenhydramine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1593109"
+        },
+        {
+          "ingredient": "aspirin / omeprazole",
+          "amount_per_dose_mg": null,
+          "rxcui": "1811630"
+        },
+        {
+          "ingredient": "aspirin / butalbital / caffeine / codeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "214160"
+        },
+        {
+          "ingredient": "aspirin / butalbital",
+          "amount_per_dose_mg": null,
+          "rxcui": "214249"
+        },
+        {
+          "ingredient": "aspirin / caffeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "214250"
+        },
+        {
+          "ingredient": "aspirin / carisoprodol",
+          "amount_per_dose_mg": null,
+          "rxcui": "214251"
+        },
+        {
+          "ingredient": "aspirin / hydrocodone",
+          "amount_per_dose_mg": null,
+          "rxcui": "214253"
+        },
+        {
+          "ingredient": "aspirin / meprobamate",
+          "amount_per_dose_mg": null,
+          "rxcui": "214254"
+        },
+        {
+          "ingredient": "aspirin / methocarbamol",
+          "amount_per_dose_mg": null,
+          "rxcui": "214255"
+        },
+        {
+          "ingredient": "aspirin / oxycodone",
+          "amount_per_dose_mg": null,
+          "rxcui": "214256"
+        },
+        {
+          "ingredient": "aspirin / pentazocine",
+          "amount_per_dose_mg": null,
+          "rxcui": "214257"
+        },
+        {
+          "ingredient": "aspirin / phenyltoloxamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "214258"
+        },
+        {
+          "ingredient": "aspirin / pseudoephedrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "214259"
+        },
+        {
+          "ingredient": "aspirin / oxycodone hydrochloride / oxycodone terephthalate",
+          "amount_per_dose_mg": null,
+          "rxcui": "215451"
+        },
+        {
+          "ingredient": "aspirin / dipyridamole",
+          "amount_per_dose_mg": null,
+          "rxcui": "226716"
+        },
+        {
+          "ingredient": "aspirin / menthol",
+          "amount_per_dose_mg": null,
+          "rxcui": "2394058"
+        },
+        {
+          "ingredient": "aspirin / butalbital / caffeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "282422"
+        },
+        {
+          "ingredient": "aspirin / glycine",
+          "amount_per_dose_mg": null,
+          "rxcui": "392499"
+        },
+        {
+          "ingredient": "aspirin / caffeine / cinnamedrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "466424"
+        },
+        {
+          "ingredient": "aspirin / caffeine / orphenadrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "466549"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / caffeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "466584"
+        },
+        {
+          "ingredient": "aspirin / diphenhydramine",
+          "amount_per_dose_mg": null,
+          "rxcui": "669119"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin",
+          "amount_per_dose_mg": null,
+          "rxcui": "687078"
+        },
+        {
+          "ingredient": "aluminum hydroxide / aspirin / calcium carbonate / magnesium hydroxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "689502"
+        },
+        {
+          "ingredient": "aspirin / butalbital / caffeine / phenacetin",
+          "amount_per_dose_mg": null,
+          "rxcui": "689507"
+        },
+        {
+          "ingredient": "aspirin / caffeine / chlorpheniramine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689509"
+        },
+        {
+          "ingredient": "aspirin / caffeine / codeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689511"
+        },
+        {
+          "ingredient": "aspirin / caffeine / dihydrocodeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689512"
+        },
+        {
+          "ingredient": "aspirin / caffeine / dihydrocodeine / promethazine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689513"
+        },
+        {
+          "ingredient": "aspirin / caffeine / hydrocodone",
+          "amount_per_dose_mg": null,
+          "rxcui": "689515"
+        },
+        {
+          "ingredient": "aspirin / caffeine / ipecac / opium",
+          "amount_per_dose_mg": null,
+          "rxcui": "689516"
+        },
+        {
+          "ingredient": "aspirin / caffeine / propoxyphene",
+          "amount_per_dose_mg": null,
+          "rxcui": "689518"
+        },
+        {
+          "ingredient": "aspirin / caffeine / salicylamide",
+          "amount_per_dose_mg": null,
+          "rxcui": "689519"
+        },
+        {
+          "ingredient": "aspirin / carisoprodol / codeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689522"
+        },
+        {
+          "ingredient": "aspirin / citric acid / sodium bicarbonate",
+          "amount_per_dose_mg": null,
+          "rxcui": "689524"
+        },
+        {
+          "ingredient": "aspirin / ethoheptazine / meprobamate",
+          "amount_per_dose_mg": null,
+          "rxcui": "689529"
+        },
+        {
+          "ingredient": "aspirin / promethazine / pseudoephedrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689540"
+        },
+        {
+          "ingredient": "aspirin / propoxyphene",
+          "amount_per_dose_mg": null,
+          "rxcui": "689541"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / caffeine / calcium gluconate",
+          "amount_per_dose_mg": null,
+          "rxcui": "689551"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / caffeine / codeine / salicylamide",
+          "amount_per_dose_mg": null,
+          "rxcui": "689552"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / caffeine / hydrocodone",
+          "amount_per_dose_mg": null,
+          "rxcui": "689553"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / caffeine / salicylamide",
+          "amount_per_dose_mg": null,
+          "rxcui": "689554"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / codeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689555"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / phenylpropanolamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689556"
+        },
+        {
+          "ingredient": "aluminum hydroxide / aspirin / codeine / magnesium hydroxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "690996"
+        },
+        {
+          "ingredient": "aluminum hydroxide / aspirin / magnesium hydroxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "690997"
+        },
+        {
+          "ingredient": "aspirin / phenobarbital",
+          "amount_per_dose_mg": null,
+          "rxcui": "812525"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin",
+          "amount_per_dose_mg": null,
+          "rxcui": "813961"
+        },
+        {
+          "ingredient": "aspirin / phenylephrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "814664"
+        },
+        {
+          "ingredient": "aspirin / diphenhydramine / phenylpropanolamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "815052"
+        },
+        {
+          "ingredient": "aspirin / chlorpheniramine / phenylpropanolamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "816174"
+        },
+        {
+          "ingredient": "acetanilide / aspirin / caffeine / ephedrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "816812"
+        },
+        {
+          "ingredient": "aspirin / chlorpheniramine",
+          "amount_per_dose_mg": null,
+          "rxcui": "816818"
+        },
+        {
+          "ingredient": "aspirin / brompheniramine / dextromethorphan / phenylpropanolamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "817275"
+        },
+        {
+          "ingredient": "aspirin / phenylpropanolamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "817405"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin / caffeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "817455"
+        },
+        {
+          "ingredient": "aspirin / caffeine / quinine",
+          "amount_per_dose_mg": null,
+          "rxcui": "817778"
+        },
+        {
+          "ingredient": "aspirin / calcium carbonate",
+          "amount_per_dose_mg": null,
+          "rxcui": "817958"
+        },
+        {
+          "ingredient": "aspirin / chlorpheniramine / phenylephrine",
+          "amount_per_dose_mg": null,
+          "rxcui": "818496"
+        },
+        {
+          "ingredient": "aspirin / papain",
+          "amount_per_dose_mg": null,
+          "rxcui": "819659"
+        },
+        {
+          "ingredient": "aspirin / cyclizine",
+          "amount_per_dose_mg": null,
+          "rxcui": "819817"
+        },
+        {
+          "ingredient": "acetaminophen / aspirin / salicylamide",
+          "amount_per_dose_mg": null,
+          "rxcui": "820701"
+        },
+        {
+          "ingredient": "acetylsalicylate sodium",
+          "amount_per_dose_mg": null,
+          "rxcui": "314293"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Aspirin' (RxCUI 1191)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1191/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Aspirin'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Aspirin\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Benadryl",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "diphenhydramine",
+          "amount_per_dose_mg": null,
+          "rxcui": "3498"
+        },
+        {
+          "ingredient": "diphenhydramine hydrochloride",
+          "amount_per_dose_mg": null,
+          "rxcui": "1362"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Benadryl' (RxCUI 203457)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/203457/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Benadryl'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Benadryl\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "ZzzQuil",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "diphenhydramine",
+          "amount_per_dose_mg": null,
+          "rxcui": "3498"
+        },
+        {
+          "ingredient": "diphenhydramine hydrochloride",
+          "amount_per_dose_mg": null,
+          "rxcui": "1362"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'ZzzQuil' (RxCUI 1233547)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1233547/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'ZzzQuil'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"ZzzQuil\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Pepto-Bismol",
+      "status": "\u2713 PASS",
+      "data": [
+        {
+          "ingredient": "bismuth subsalicylate",
+          "amount_per_dose_mg": 262.0,
+          "rxcui": "19478"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Pepto-Bismol' (RxCUI 54536)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/54536/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Pepto-Bismol'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Pepto-Bismol\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "Imodium",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "loperamide",
+          "amount_per_dose_mg": null,
+          "rxcui": "6468"
+        },
+        {
+          "ingredient": "loperamide hydrochloride",
+          "amount_per_dose_mg": null,
+          "rxcui": "82038"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'Imodium' (RxCUI 151889)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/151889/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'Imodium'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Imodium\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "melatonin",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "melatonin",
+          "amount_per_dose_mg": null,
+          "rxcui": "6711"
+        },
+        {
+          "ingredient": "calcium phosphate / melatonin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007276"
+        },
+        {
+          "ingredient": "melatonin / theanine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008032"
+        },
+        {
+          "ingredient": "melatonin / pyridoxine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008350"
+        },
+        {
+          "ingredient": "melatonin / vitamin b6",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008584"
+        },
+        {
+          "ingredient": "melatonin / tryptophan",
+          "amount_per_dose_mg": null,
+          "rxcui": "1094140"
+        },
+        {
+          "ingredient": "melatonin / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1114858"
+        },
+        {
+          "ingredient": "5-hydroxytryptophan / magnesium oxide / melatonin / tryptophan / vitamin b6",
+          "amount_per_dose_mg": null,
+          "rxcui": "1293412"
+        },
+        {
+          "ingredient": "melatonin / threonine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1945123"
+        },
+        {
+          "ingredient": "5-hydroxytryptophan / melatonin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1945211"
+        },
+        {
+          "ingredient": "acetaminophen / melatonin",
+          "amount_per_dose_mg": null,
+          "rxcui": "820463"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'melatonin' (RxCUI 6711)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/6711/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'melatonin'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"melatonin\"&limit=1"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "fish oil",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "fish oils",
+          "amount_per_dose_mg": null,
+          "rxcui": "4419"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'fish oil' (RxCUI 4419)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/4419/allrelated.json"
+        }
+      ],
+      "warning": null
+    },
+    {
+      "product": "vitamin C",
+      "status": "~ PARTIAL (no dose amounts)",
+      "data": [
+        {
+          "ingredient": "ascorbic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1151"
+        },
+        {
+          "ingredient": "ascorbic acid / niacinamide / vitamin a",
+          "amount_per_dose_mg": null,
+          "rxcui": "1006948"
+        },
+        {
+          "ingredient": "ascorbic acid / beta carotene / cuprous oxide / lutein / sodium selenate / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007087"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / folic acid / liver stomach concentrate / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007098"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous chloride",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007224"
+        },
+        {
+          "ingredient": "ascorbic acid / thiamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007231"
+        },
+        {
+          "ingredient": "ascorbic acid / copper sulfate / ferrous fumarate / folic acid / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007310"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / folic acid / niacin / pantothenate / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007320"
+        },
+        {
+          "ingredient": "ascorbic acid / folic acid / polysaccharide iron complex / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007326"
+        },
+        {
+          "ingredient": "ascorbic acid / bromelains",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007356"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / folic acid / intrinsic factor",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007398"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin / cysteine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007407"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin / diphenylpyraline",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007424"
+        },
+        {
+          "ingredient": "ascorbic acid / zinc acetate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007455"
+        },
+        {
+          "ingredient": "ascorbic acid / dequalinium",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007460"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / calcium carbonate / cholecalciferol / docusate / ferrous fumarate / folic acid / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007504"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / docusate / ferrous fumarate / folic acid / niacinamide / pantothenic acid / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007505"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / ferrous fumarate / folic acid / mecobalamin / niacinamide / pantothenate / pyridoxine / riboflavin / thiamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007524"
+        },
+        {
+          "ingredient": "ascorbic acid / polyethylene glycol 3350 / potassium chloride / sodium ascorbate / sodium chloride / sodium sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007544"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / niacinamide / polysaccharide iron complex",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007547"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / sodium fluoride / vitamin a",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007555"
+        },
+        {
+          "ingredient": "ascorbic acid / d-biotin / folic acid / niacinamide / pantothenate / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007728"
+        },
+        {
+          "ingredient": "ascorbic acid / chondroitin sulfates / glucosamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007771"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / folic acid / mecobalamin / niacinamide / pantothenate / pyridoxine / riboflavin / thiamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007772"
+        },
+        {
+          "ingredient": "ascorbic acid / docosahexaenoate / lutein",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007782"
+        },
+        {
+          "ingredient": "ascorbic acid / folic acid / iron carbonyl / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007807"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous gluconate / folic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007831"
+        },
+        {
+          "ingredient": "ascorbic acid / vitamin a / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007865"
+        },
+        {
+          "ingredient": "ascorbic acid / phenol",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007879"
+        },
+        {
+          "ingredient": "ascorbic acid / vitamin a / vitamin e / zinc sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007894"
+        },
+        {
+          "ingredient": "ascorbic acid / magnesium sulfate / vitamin e / zinc sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007896"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous bisglycinate / folic acid / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007897"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium lactate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007926"
+        },
+        {
+          "ingredient": "ascorbic acid / docusate / folic acid / iron carbonyl / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007946"
+        },
+        {
+          "ingredient": "ascorbic acid / potassium citrate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007958"
+        },
+        {
+          "ingredient": "ascorbic acid / quinine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007973"
+        },
+        {
+          "ingredient": "ascorbic acid / vitamin b6 / zinc citrate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1007988"
+        },
+        {
+          "ingredient": "ascorbic acid / iron carbonyl",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008009"
+        },
+        {
+          "ingredient": "ascorbic acid / pectin / zinc gluconate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008021"
+        },
+        {
+          "ingredient": "ascorbic acid / vitamin b12 / zinc gluconate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008023"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / calcium carbonate / cupric oxide / ferrous fumarate / folic acid / magnesium oxide / niacinamide / pantothenic acid / riboflavin / thiamine / vitamin a / vitamin b12 / vitamin b6 / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008024"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous bisglycinate / polysaccharide iron complex",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008039"
+        },
+        {
+          "ingredient": "ascorbic acid / hyaluronate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008091"
+        },
+        {
+          "ingredient": "ascorbic acid / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008100"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous gluconate / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008135"
+        },
+        {
+          "ingredient": "ascorbic acid / menthol",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008137"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / folic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008141"
+        },
+        {
+          "ingredient": "acetaminophen / ascorbic acid / eucalyptol",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008142"
+        },
+        {
+          "ingredient": "ascorbic acid / bee pollen",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008143"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / folic acid / intrinsic factor / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008151"
+        },
+        {
+          "ingredient": "ascorbic acid / dequalinium / tyrothricin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008215"
+        },
+        {
+          "ingredient": "ascorbic acid / d-biotin / folic acid / niacinamide / pantothenic acid / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008235"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium sulfate / cupric oxide / niacinamide / pyridoxine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008246"
+        },
+        {
+          "ingredient": "ascorbic acid / quercetin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008250"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / folic acid / niacin / pantothenic acid / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008263"
+        },
+        {
+          "ingredient": "ascorbic acid / beta carotene / cuprous oxide / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008304"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / cholecalciferol / copper sulfate / docusate / folic acid / iron carbonyl / magnesium oxide / pyridoxine / riboflavin / thiamine / vitamin a / vitamin b12 / zinc sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008307"
+        },
+        {
+          "ingredient": "ascorbic acid / rutin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008326"
+        },
+        {
+          "ingredient": "ascorbic acid / folic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008333"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous sulfate / folic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008386"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / docosahexaenoate / eicosapentaenoate / ferrous fumarate / folic acid / pyridoxine / tricalcium phosphate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008389"
+        },
+        {
+          "ingredient": "ascorbic acid / riboflavin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008416"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium phosphate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008420"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008422"
+        },
+        {
+          "ingredient": "ascorbic acid / niacinamide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008439"
+        },
+        {
+          "ingredient": "ascorbic acid / tetracaine / tyrothricin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008451"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium carbonate / cholecalciferol / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008555"
+        },
+        {
+          "ingredient": "ascorbic acid / pantothenic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008597"
+        },
+        {
+          "ingredient": "ascorbic acid / pantothenic acid / quercetin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008599"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium carbonate / ferrous fumarate / folic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008631"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium citrate / silicon dioxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008673"
+        },
+        {
+          "ingredient": "ascorbic acid / zinc citrate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008676"
+        },
+        {
+          "ingredient": "ascorbic acid / vitamin b6",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008734"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / folic acid / niacinamide / polysaccharide iron complex",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008783"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / folic acid / mecobalamin / niacinamide / pantothenate / pyridoxine / riboflavin / thiamine / zinc citrate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008799"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / folic acid / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008824"
+        },
+        {
+          "ingredient": "ascorbic acid / magnesium oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008856"
+        },
+        {
+          "ingredient": "ascorbic acid / inositol",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008861"
+        },
+        {
+          "ingredient": "ascorbic acid / rutin / vincamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008862"
+        },
+        {
+          "ingredient": "ascorbic acid / copper sulfate / ferrous fumarate / folic acid",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008939"
+        },
+        {
+          "ingredient": "ascorbic acid / ubiquinol",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008956"
+        },
+        {
+          "ingredient": "ascorbic acid / polysaccharide iron complex",
+          "amount_per_dose_mg": null,
+          "rxcui": "1008963"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1009034"
+        },
+        {
+          "ingredient": "ascorbic acid / vitamin a",
+          "amount_per_dose_mg": null,
+          "rxcui": "1009099"
+        },
+        {
+          "ingredient": "ascorbic acid / cuprous oxide / lutein / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1009100"
+        },
+        {
+          "ingredient": "ascorbic acid / tyrothricin",
+          "amount_per_dose_mg": null,
+          "rxcui": "1009107"
+        },
+        {
+          "ingredient": "ascorbic acid / collagen, hydrolyzed",
+          "amount_per_dose_mg": null,
+          "rxcui": "1009124"
+        },
+        {
+          "ingredient": "ascorbic acid / folic acid / polysaccharide iron complex",
+          "amount_per_dose_mg": null,
+          "rxcui": "1014404"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / cholecalciferol / docosahexaenoate / docusate / ferrous fumarate / folic acid / pyridoxine / tricalcium phosphate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1043299"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate / folic acid / niacin / polysaccharide iron complex",
+          "amount_per_dose_mg": null,
+          "rxcui": "1087297"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / copper sulfate / docusate / folic acid / iron carbonyl / vitamin b12 / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "1087405"
+        },
+        {
+          "ingredient": "ascorbic acid / chromium polynicotinate / niacinamide / oat bran / phytosterols / pregna-4,17-diene-3,16-dione",
+          "amount_per_dose_mg": null,
+          "rxcui": "1088594"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / folic acid / niacinamide / pantothenate / pyridoxine / riboflavin / thiamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1090062"
+        },
+        {
+          "ingredient": "ascorbic acid / beta carotene / copper sulfate / selenite / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1090823"
+        },
+        {
+          "ingredient": "ascorbic acid / beta carotene / copper sulfate / lutein / selenite / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1090831"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / niacinamide / pyridoxine / riboflavin / thiamine / vitamin a / vitamin b12 / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "1090967"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / cholecalciferol / folic acid / niacin / pantothenic acid / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1095603"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / calcium citrate / cholecalciferol / cupric oxide / docusate / folic acid / iron carbonyl / niacinamide / potassium iodide / pyridoxine / riboflavin / thiamine / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1100257"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium citrate / cholecalciferol / folic acid / iron carbonyl / pyridoxine",
+          "amount_per_dose_mg": null,
+          "rxcui": "1100261"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / beta carotene / calcium carbonate / cholecalciferol / cupric oxide / ferrous bisglycinate / folic acid / iron protein succinylate / magnesium oxide / niacinamide / pyridoxine / riboflavin / thiamine / vitamin b12 / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1100466"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / ferrous bisglycinate / folic acid / formic acid / iron-dextran complex / niacin / pantothenate / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1102195"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / calcium carbonate / folic acid / niacin / pantothenate / pyridoxine / riboflavin / succinic acid / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1102200"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium carbonate / cholecalciferol / choline / ferrous fumarate / folic acid / niacin / potassium iodide / pyridoxine / riboflavin / thiamine / vitamin b12 / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1114601"
+        },
+        {
+          "ingredient": "ascorbic acid / copper gluconate / docosahexaenoate / eicosapentaenoate / lutein / vitamin e / zeaxanthin / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1115788"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / cuprous oxide / folic acid / magnesium oxide / niacin / polysaccharide iron complex / potassium iodide / pyridoxine / riboflavin / thiamine / vitamin a / vitamin b12 / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1119568"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium carbonate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1150171"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / niacin / riboflavin / sodium fluoride / thiamine / vitamin a / vitamin b12 / vitamin b6 / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "1234471"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / ferrous sulfate / sodium fluoride / vitamin a",
+          "amount_per_dose_mg": null,
+          "rxcui": "1244007"
+        },
+        {
+          "ingredient": "ascorbic acid / beta carotene / calcium carbonate / cholecalciferol / cupric oxide / docusate / folic acid / iron carbonyl / magnesium oxide / niacinamide / pyridoxine / riboflavin / thiamine / vitamin b12 / vitamin e / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1248141"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / vitamin a",
+          "amount_per_dose_mg": null,
+          "rxcui": "1292776"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / folic acid / niacin / pantothenic acid / pyridoxine / riboflavin / thiamine / vitamin b12 / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "1298309"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / cholecalciferol / folic acid / iron carbonyl / niacinamide / pyridoxine / riboflavin / thiamine / vitamin b12",
+          "amount_per_dose_mg": null,
+          "rxcui": "1304496"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / calcium carbonate / cholecalciferol / cupric oxide / docusate / folic acid / iron carbonyl / magnesium oxide / niacinamide / pyridoxine / riboflavin / thiamine / vitamin b12 / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1304510"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / biotin / cholecalciferol / dexpanthenol / folic acid / niacinamide / pyridoxine / riboflavin / thiamine / vitamin a / vitamin b12 / vitamin k1",
+          "amount_per_dose_mg": null,
+          "rxcui": "1304558"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / biotin / dexpanthenol / ergocalciferol / folic acid / niacinamide / pyridoxine / riboflavin / thiamine / vitamin a / vitamin b12 / vitamin k1",
+          "amount_per_dose_mg": null,
+          "rxcui": "1305199"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / beta carotene / calcium carbonate / cholecalciferol / docusate / ferrous fumarate / folic acid / niacinamide / pantothenate / pyridoxine / riboflavin / thiamine / vitamin b12 / zinc oxide",
+          "amount_per_dose_mg": null,
+          "rxcui": "1313924"
+        },
+        {
+          "ingredient": "ascorbic acid / biotin / copper sulfate / ferrous fumarate / folic acid / magnesium sulfate / manganese sulfate / niacin / pantothenate / polysaccharide iron complex / pyridoxine / riboflavin / thiamine / vitamin b12 / zinc sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1314665"
+        },
+        {
+          "ingredient": "ascorbic acid / collagen",
+          "amount_per_dose_mg": null,
+          "rxcui": "1441397"
+        },
+        {
+          "ingredient": "ascorbic acid / resveratrol",
+          "amount_per_dose_mg": null,
+          "rxcui": "1874901"
+        },
+        {
+          "ingredient": "alpha tocopherol / ascorbic acid / cholecalciferol / doconexent / docusate / ferrous fumarate / folic acid / pyridoxine / tricalcium phosphate",
+          "amount_per_dose_mg": null,
+          "rxcui": "1944962"
+        },
+        {
+          "ingredient": "ascorbic acid / polyethylene glycol 3350 / potassium chloride / sodium ascorbate / sodium chloride",
+          "amount_per_dose_mg": null,
+          "rxcui": "2045242"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous fumarate",
+          "amount_per_dose_mg": null,
+          "rxcui": "214247"
+        },
+        {
+          "ingredient": "ascorbic acid / ferrous sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "214248"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / ferrous sulfate / vitamin a",
+          "amount_per_dose_mg": null,
+          "rxcui": "2284161"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium carbonate / cholecalciferol / copper sulfate / ferrous fumarate / folic acid / magnesium oxide / niacinamide / potassium iodide / pyridoxine / riboflavin / thiamine / vitamin a / vitamin b12 / vitamin e / zinc sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "2371753"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / folic acid / niacin / riboflavin / sodium fluoride / thiamine / vitamin a / vitamin b12 / vitamin b6 / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "2371781"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / ferrous sulfate / niacin / riboflavin / thiamine / vitamin a / vitamin b6 / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "2371791"
+        },
+        {
+          "ingredient": "ascorbic acid / cholecalciferol / niacin / riboflavin / thiamine / vitamin a / vitamin b12 / vitamin b6 / vitamin e",
+          "amount_per_dose_mg": null,
+          "rxcui": "2371800"
+        },
+        {
+          "ingredient": "ascorbic acid / astaxanthin",
+          "amount_per_dose_mg": null,
+          "rxcui": "2636841"
+        },
+        {
+          "ingredient": "ascorbic acid / clioquinol",
+          "amount_per_dose_mg": null,
+          "rxcui": "392477"
+        },
+        {
+          "ingredient": "ascorbic acid / chlorpheniramine / phenylpropanolamine / pyrilamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "689256"
+        },
+        {
+          "ingredient": "ascorbic acid / docusate / ferrous fumarate",
+          "amount_per_dose_mg": null,
+          "rxcui": "689489"
+        },
+        {
+          "ingredient": "ascorbic acid / hesperidin",
+          "amount_per_dose_mg": null,
+          "rxcui": "689494"
+        },
+        {
+          "ingredient": "ascorbic acid / niacin",
+          "amount_per_dose_mg": null,
+          "rxcui": "689498"
+        },
+        {
+          "ingredient": "ascorbic acid / sodium fluoride",
+          "amount_per_dose_mg": null,
+          "rxcui": "813791"
+        },
+        {
+          "ingredient": "ascorbic acid / zinc sulfate",
+          "amount_per_dose_mg": null,
+          "rxcui": "813863"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin",
+          "amount_per_dose_mg": null,
+          "rxcui": "813961"
+        },
+        {
+          "ingredient": "ascorbic acid / vincamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "814044"
+        },
+        {
+          "ingredient": "ascorbic acid / piroxicam",
+          "amount_per_dose_mg": null,
+          "rxcui": "815628"
+        },
+        {
+          "ingredient": "ascorbic acid / phenylpropanolamine",
+          "amount_per_dose_mg": null,
+          "rxcui": "815946"
+        },
+        {
+          "ingredient": "ascorbic acid / calcium ascorbate",
+          "amount_per_dose_mg": null,
+          "rxcui": "816394"
+        },
+        {
+          "ingredient": "ascorbic acid / aspirin / caffeine",
+          "amount_per_dose_mg": null,
+          "rxcui": "817455"
+        },
+        {
+          "ingredient": "ascorbic acid / zinc gluconate",
+          "amount_per_dose_mg": null,
+          "rxcui": "818798"
+        },
+        {
+          "ingredient": "ascorbic acid / glucose",
+          "amount_per_dose_mg": null,
+          "rxcui": "821174"
+        }
+      ],
+      "sources": [
+        {
+          "name": "RxNorm: 'vitamin C' (RxCUI 1151)",
+          "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1151/allrelated.json"
+        },
+        {
+          "name": "OpenFDA label: 'vitamin C'",
+          "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"vitamin C\"&limit=1"
+        }
+      ],
+      "warning": null
+    }
+  ],
+  "tool2": {
+    "combo_tests": [
+      {
+        "label": "Acetaminophen + Alcohol (must detect)",
+        "status": "\u2713",
+        "found": [
+          {
+            "ingredient_a": "acetaminophen",
+            "ingredient_b": "ethanol",
+            "severity": "high",
+            "description": "Chronic alcohol use (3+ drinks/day) combined with acetaminophen significantly increases risk of hepatotoxicity. FDA requires alcohol warning on all acetaminophen OTC labels.",
+            "management": "Avoid acetaminophen or limit to <2g/day if drinking regularly."
+          }
+        ],
+        "sources": [
+          {
+            "name": "FDA OTC monograph / clinical literature: acetaminophen + ethanol",
+            "url": "https://www.fda.gov/drugs/drug-interactions-labeling"
+          }
+        ]
+      },
+      {
+        "label": "Ibuprofen + Aspirin (must detect)",
+        "status": "\u2713",
+        "found": [
+          {
+            "ingredient_a": "ibuprofen",
+            "ingredient_b": "aspirin",
+            "severity": "moderate",
+            "description": "Ibuprofen can interfere with aspirin's antiplatelet effect when taken within 30 minutes before or 8 hours after aspirin. Both increase GI bleeding risk.",
+            "management": "Take aspirin at least 30 min before ibuprofen. Consider alternatives."
+          }
+        ],
+        "sources": [
+          {
+            "name": "FDA OTC monograph / clinical literature: ibuprofen + aspirin",
+            "url": "https://www.fda.gov/drugs/drug-interactions-labeling"
+          }
+        ]
+      },
+      {
+        "label": "Dual NSAIDs: Ibuprofen + Naproxen (must detect)",
+        "status": "\u2713",
+        "found": [
+          {
+            "ingredient_a": "ibuprofen",
+            "ingredient_b": "naproxen sodium",
+            "severity": "high",
+            "description": "Two NSAIDs taken together do not provide additional pain relief but significantly increase risk of GI ulcers, bleeding, and kidney damage.",
+            "management": "Never combine two NSAIDs. Use one or the other."
+          }
+        ],
+        "sources": [
+          {
+            "name": "FDA OTC monograph / clinical literature: ibuprofen + naproxen sodium",
+            "url": "https://www.fda.gov/drugs/drug-interactions-labeling"
+          }
+        ]
+      },
+      {
+        "label": "Diphenhydramine + Alcohol (must detect)",
+        "status": "\u2713",
+        "found": [
+          {
+            "ingredient_a": "diphenhydramine",
+            "ingredient_b": "ethanol",
+            "severity": "high",
+            "description": "Diphenhydramine (found in Benadryl, NyQuil, ZzzQuil, many sleep aids) combined with alcohol causes additive CNS depression: extreme drowsiness, impaired coordination, risk of respiratory depression.",
+            "management": "Avoid alcohol entirely when taking diphenhydramine."
+          }
+        ],
+        "sources": [
+          {
+            "name": "FDA OTC monograph / clinical literature: diphenhydramine + ethanol",
+            "url": "https://www.fda.gov/drugs/drug-interactions-labeling"
+          }
+        ]
+      },
+      {
+        "label": "Safe pair: Loratadine + Ibuprofen (expect none/low)",
+        "status": "\u2713",
+        "found": [],
+        "sources": []
+      }
+    ],
+    "full_pool": [
+      {
+        "ingredient_a": "acetaminophen",
+        "ingredient_b": "ethanol",
+        "severity": "high",
+        "description": "Chronic alcohol use (3+ drinks/day) combined with acetaminophen significantly increases risk of hepatotoxicity. FDA requires alcohol warning on all acetaminophen OTC labels.",
+        "management": "Avoid acetaminophen or limit to <2g/day if drinking regularly."
+      },
+      {
+        "ingredient_a": "ibuprofen",
+        "ingredient_b": "aspirin",
+        "severity": "moderate",
+        "description": "Ibuprofen can interfere with aspirin's antiplatelet effect when taken within 30 minutes before or 8 hours after aspirin. Both increase GI bleeding risk.",
+        "management": "Take aspirin at least 30 min before ibuprofen. Consider alternatives."
+      },
+      {
+        "ingredient_a": "ibuprofen",
+        "ingredient_b": "naproxen sodium",
+        "severity": "high",
+        "description": "Two NSAIDs taken together do not provide additional pain relief but significantly increase risk of GI ulcers, bleeding, and kidney damage.",
+        "management": "Never combine two NSAIDs. Use one or the other."
+      },
+      {
+        "ingredient_a": "diphenhydramine",
+        "ingredient_b": "ethanol",
+        "severity": "high",
+        "description": "Diphenhydramine (found in Benadryl, NyQuil, ZzzQuil, many sleep aids) combined with alcohol causes additive CNS depression: extreme drowsiness, impaired coordination, risk of respiratory depression.",
+        "management": "Avoid alcohol entirely when taking diphenhydramine."
+      },
+      {
+        "ingredient_a": "aspirin",
+        "ingredient_b": "bismuth subsalicylate",
+        "severity": "moderate",
+        "description": "Bismuth subsalicylate (Pepto-Bismol) contains salicylate. Combined with aspirin, total salicylate load can cause toxicity, especially in children (Reye's syndrome risk).",
+        "management": "Avoid combining. Do not give either to children with viral illness."
+      }
+    ]
+  },
+  "tool3": {
+    "scenarios": [
+      {
+        "label": "NyQuil (x2) + Tylenol (x3) \u2014 should flag acetaminophen",
+        "status": "\u2717 Expected 'acetaminophen' to be flagged",
+        "data": [
+          {
+            "ingredient": "acetaminophen",
+            "total_mg_per_day": 1500.0,
+            "safe_limit_mg": 3000,
+            "exceeds_limit": false,
+            "contributing_products": [
+              "Tylenol"
+            ]
+          },
+          {
+            "ingredient": "chlorpheniramine maleate",
+            "total_mg_per_day": 4.0,
+            "safe_limit_mg": null,
+            "exceeds_limit": false,
+            "contributing_products": [
+              "NyQuil"
+            ]
+          },
+          {
+            "ingredient": "dextromethorphan hbr",
+            "total_mg_per_day": 20.0,
+            "safe_limit_mg": null,
+            "exceeds_limit": false,
+            "contributing_products": [
+              "NyQuil"
+            ]
+          }
+        ],
+        "warning": null
+      },
+      {
+        "label": "Advil (x3) + Aleve (x2) \u2014 should flag dual NSAID load",
+        "status": "\u2713",
+        "data": [
+          {
+            "ingredient": "naproxen sodium",
+            "total_mg_per_day": 880.0,
+            "safe_limit_mg": 660,
+            "exceeds_limit": true,
+            "contributing_products": [
+              "Aleve"
+            ]
+          },
+          {
+            "ingredient": "ibuprofen",
+            "total_mg_per_day": 0.0,
+            "safe_limit_mg": 1200,
+            "exceeds_limit": false,
+            "contributing_products": [
+              "Advil"
+            ]
+          }
+        ],
+        "warning": "Naproxen Sodium: estimated 880 mg/day exceeds safe OTC limit of 660 mg/day. | Could not determine per-dose amounts for: ibuprofen. Manual dose check recommended."
+      },
+      {
+        "label": "Single Benadryl (x1) \u2014 should be within limits",
+        "status": "\u2713",
+        "data": [
+          {
+            "ingredient": "diphenhydramine",
+            "total_mg_per_day": 0.0,
+            "safe_limit_mg": 300,
+            "exceeds_limit": false,
+            "contributing_products": [
+              "Benadryl"
+            ]
+          },
+          {
+            "ingredient": "diphenhydramine hydrochloride",
+            "total_mg_per_day": 0.0,
+            "safe_limit_mg": null,
+            "exceeds_limit": false,
+            "contributing_products": [
+              "Benadryl"
+            ]
+          }
+        ],
+        "warning": "Could not determine per-dose amounts for: diphenhydramine, diphenhydramine hydrochloride. Manual dose check recommended."
+      }
+    ]
+  }
+}

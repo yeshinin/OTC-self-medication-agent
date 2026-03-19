@@ -1,0 +1,104 @@
+{
+  "products": [
+    "Advils"
+  ],
+  "output": {
+    "risk_level": "high",
+    "risk_summary": "Combining ibuprofen (Advil) with alcohol significantly increases your risk of stomach bleeding and can cause serious liver and kidney damage.",
+    "details": [
+      {
+        "finding": "Alcohol and ibuprofen taken together greatly increase the chance of stomach bleeding",
+        "explanation": "Ibuprofen is an anti-inflammatory painkiller (NSAID) that can irritate your stomach lining and make it more vulnerable to bleeding. Alcohol does the same thing. When you combine them, the risk multiplies \u2014 you could develop bleeding ulcers or dangerous gastrointestinal bleeding that might not show obvious symptoms until it becomes serious. This is especially risky if you drink regularly or take ibuprofen for several days in a row.",
+        "source": "FDA NSAID safety guidance and alcohol interaction warnings"
+      },
+      {
+        "finding": "Alcohol combined with ibuprofen puts extra strain on your liver and kidneys",
+        "explanation": "Both alcohol and ibuprofen are processed by your liver and filtered by your kidneys. Taking them together forces these organs to work much harder, which can lead to liver inflammation or reduced kidney function over time. If you already have any liver or kidney problems, even mild ones you might not know about, this combination becomes particularly dangerous.",
+        "source": "FDA NSAID safety guidance and alcohol interaction warnings"
+      }
+    ],
+    "what_to_do": "Do not take Advil (ibuprofen) if you have been drinking alcohol or plan to drink within the next several hours. If you need pain relief and have consumed alcohol, acetaminophen (Tylenol) is generally safer, but you must stay within 3,000mg per day total and avoid it entirely if you drink three or more alcoholic drinks daily. The safest approach is to wait until the alcohol has completely cleared your system \u2014 at least 4 to 6 hours after your last drink \u2014 before taking any pain medication. If you regularly drink alcohol and also need regular pain relief, talk to a pharmacist about which option is safest for your specific situation and whether you should avoid NSAIDs like ibuprofen altogether.",
+    "see_pharmacist": true
+  },
+  "sources": [
+    {
+      "name": "RxNorm: 'Advils' (RxCUI 153010)",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/153010/allrelated.json"
+    },
+    {
+      "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+    }
+  ],
+  "tool_data": {
+    "resolved": [
+      {
+        "product": "Advils",
+        "data": [
+          {
+            "ingredient": "ibuprofen",
+            "amount_per_dose_mg": null,
+            "rxcui": "5640"
+          }
+        ],
+        "sources": [
+          {
+            "name": "RxNorm: 'Advils' (RxCUI 153010)",
+            "url": "https://rxnav.nlm.nih.gov/REST/rxcui/153010/allrelated.json"
+          }
+        ],
+        "warning": null
+      }
+    ],
+    "interactions": {
+      "data": [],
+      "sources": [],
+      "warning": "No documented interactions found between these ingredients. Absence of data does not confirm safety, especially for supplements."
+    },
+    "dose_check": {
+      "data": [
+        {
+          "ingredient": "ibuprofen",
+          "total_mg_per_day": 0.0,
+          "safe_limit_mg": 1200,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "Advils"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+          "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+        }
+      ],
+      "warning": "Could not determine per-dose amounts for: ibuprofen. Manual dose check recommended."
+    }
+  },
+  "error": null,
+  "extracted": {
+    "products": [
+      {
+        "name": "Advils",
+        "is_otc": true,
+        "dose_value": 600,
+        "dose_unit": "mg",
+        "frequency_per_day": 1,
+        "duration_days": null,
+        "confidence": "high"
+      }
+    ],
+    "substances": [
+      {
+        "name": "ethanol",
+        "frequency_per_day": null,
+        "confidence": "medium"
+      }
+    ],
+    "extraction_notes": "User took 3 \u00d7 200mg Advil (total 600mg) at 10 AM. Planning to consume 'a few beers' at party (quantity unspecified). User mentions sensitive stomach/acid reflux as existing condition.",
+    "raw_response": "{\n  \"products\": [\n    {\n      \"name\": \"Advils\",\n      \"is_otc\": true,\n      \"dose_value\": 600,\n      \"dose_unit\": \"mg\",\n      \"frequency_per_day\": 1,\n      \"duration_days\": null,\n      \"confidence\": \"high\"\n    }\n  ],\n  \"substances\": [\n    {\n      \"name\": \"ethanol\",\n      \"frequency_per_day\": null,\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"extraction_notes\": \"User took 3 \u00d7 200mg Advil (total 600mg) at 10 AM. Planning to consume 'a few beers' at party (quantity unspecified). User mentions sensitive stomach/acid reflux as existing condition.\"\n}",
+    "error": null
+  },
+  "extraction_notes": "User took 3 \u00d7 200mg Advil (total 600mg) at 10 AM. Planning to consume 'a few beers' at party (quantity unspecified). User mentions sensitive stomach/acid reflux as existing condition."
+}

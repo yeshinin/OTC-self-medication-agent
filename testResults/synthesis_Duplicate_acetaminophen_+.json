@@ -1,0 +1,175 @@
+{
+  "products": [
+    "Theraflu",
+    "Tylenol"
+  ],
+  "output": {
+    "risk_level": "high",
+    "risk_summary": "You are taking too much acetaminophen (3500mg when the safe limit is 3000mg), and combining it with alcohol creates a serious risk of liver damage.",
+    "details": [
+      {
+        "finding": "Acetaminophen dose exceeds safe daily limit",
+        "explanation": "Both Theraflu and Tylenol contain acetaminophen. Together they give you 3500mg per day, which is 500mg over the maximum safe amount of 3000mg. Taking too much acetaminophen can cause liver damage, especially over multiple days. The extra 500mg might seem small, but your liver processes every milligram and can become overwhelmed.",
+        "source": "Dose Accumulation Analysis"
+      },
+      {
+        "finding": "Acetaminophen combined with alcohol significantly increases liver damage risk",
+        "explanation": "Drinking alcohol regularly (3 or more drinks per day) while taking acetaminophen puts enormous stress on your liver. Both substances are processed by the same liver pathways, and together they can cause serious, sometimes permanent liver damage. The FDA requires warning labels about this combination on every acetaminophen product because the risk is well-established and dangerous.",
+        "source": "FDA OTC monograph / clinical literature: acetaminophen + ethanol"
+      }
+    ],
+    "what_to_do": "Stop taking one of these products immediately to get your acetaminophen dose back under 3000mg per day. If you choose to keep taking Theraflu for your cold symptoms, do not take additional Tylenol. One dose of Theraflu already contains 1000mg of acetaminophen, so taking it twice daily would give you 2000mg, which is safer. If you drink alcohol regularly, you need to either avoid acetaminophen entirely or limit yourself to no more than 2000mg per day, and ideally discuss this with a healthcare provider. For pain or fever relief while drinking, ask a pharmacist about safer alternatives like ibuprofen (though this has different risks if you have stomach issues). For your cold symptoms, consider products that do not contain acetaminophen, or use non-medication approaches like rest, fluids, and steam.",
+    "see_pharmacist": true
+  },
+  "sources": [
+    {
+      "name": "OpenFDA label: 'Theraflu'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Theraflu\"&limit=1"
+    },
+    {
+      "name": "RxNorm: 'Tylenol' (RxCUI 202433)",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/allrelated.json"
+    },
+    {
+      "name": "OpenFDA label: 'Tylenol'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Tylenol\"&limit=1"
+    },
+    {
+      "name": "FDA OTC monograph / clinical literature: acetaminophen + ethanol",
+      "url": "https://www.fda.gov/drugs/drug-interactions-labeling"
+    },
+    {
+      "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+    }
+  ],
+  "tool_data": {
+    "resolved": [
+      {
+        "product": "Theraflu",
+        "data": [
+          {
+            "ingredient": "acetaminophen",
+            "amount_per_dose_mg": 1000.0,
+            "rxcui": null
+          },
+          {
+            "ingredient": "dextromethorphan",
+            "amount_per_dose_mg": 30.0,
+            "rxcui": null
+          }
+        ],
+        "sources": [
+          {
+            "name": "OpenFDA label: 'Theraflu'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Theraflu\"&limit=1"
+          }
+        ],
+        "warning": null
+      },
+      {
+        "product": "Tylenol",
+        "data": [
+          {
+            "ingredient": "acetaminophen",
+            "amount_per_dose_mg": 500.0,
+            "rxcui": "161"
+          }
+        ],
+        "sources": [
+          {
+            "name": "RxNorm: 'Tylenol' (RxCUI 202433)",
+            "url": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/allrelated.json"
+          },
+          {
+            "name": "OpenFDA label: 'Tylenol'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Tylenol\"&limit=1"
+          }
+        ],
+        "warning": null
+      }
+    ],
+    "interactions": {
+      "data": [
+        {
+          "ingredient_a": "acetaminophen",
+          "ingredient_b": "ethanol",
+          "severity": "high",
+          "description": "Chronic alcohol use (3+ drinks/day) combined with acetaminophen significantly increases risk of hepatotoxicity. FDA requires alcohol warning on all acetaminophen OTC labels.",
+          "management": "Avoid acetaminophen or limit to <2g/day if drinking regularly."
+        }
+      ],
+      "sources": [
+        {
+          "name": "FDA OTC monograph / clinical literature: acetaminophen + ethanol",
+          "url": "https://www.fda.gov/drugs/drug-interactions-labeling"
+        }
+      ],
+      "warning": null
+    },
+    "dose_check": {
+      "data": [
+        {
+          "ingredient": "acetaminophen",
+          "total_mg_per_day": 3500.0,
+          "safe_limit_mg": 3000,
+          "exceeds_limit": true,
+          "contributing_products": [
+            "Theraflu",
+            "Tylenol"
+          ]
+        },
+        {
+          "ingredient": "dextromethorphan",
+          "total_mg_per_day": 60.0,
+          "safe_limit_mg": 120,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "Theraflu"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+          "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+        }
+      ],
+      "warning": "Acetaminophen: estimated 3500 mg/day exceeds safe OTC limit of 3000 mg/day."
+    }
+  },
+  "error": null,
+  "extracted": {
+    "products": [
+      {
+        "name": "Theraflu",
+        "is_otc": true,
+        "dose_value": null,
+        "dose_unit": null,
+        "frequency_per_day": 2,
+        "duration_days": null,
+        "confidence": "medium"
+      },
+      {
+        "name": "Tylenol",
+        "is_otc": true,
+        "dose_value": null,
+        "dose_unit": null,
+        "frequency_per_day": 3,
+        "duration_days": null,
+        "confidence": "medium"
+      }
+    ],
+    "substances": [
+      {
+        "name": "ethanol",
+        "frequency_per_day": 1,
+        "confidence": "high"
+      }
+    ],
+    "extraction_notes": "Dose amounts not stated for either product.",
+    "raw_response": "{\n  \"products\": [\n    {\n      \"name\": \"Theraflu\",\n      \"is_otc\": true,\n      \"dose_value\": null,\n      \"dose_unit\": null,\n      \"frequency_per_day\": 2,\n      \"duration_days\": null,\n      \"confidence\": \"medium\"\n    },\n    {\n      \"name\": \"Tylenol\",\n      \"is_otc\": true,\n      \"dose_value\": null,\n      \"dose_unit\": null,\n      \"frequency_per_day\": 3,\n      \"duration_days\": null,\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"substances\": [\n    {\n      \"name\": \"ethanol\",\n      \"frequency_per_day\": 1,\n      \"confidence\": \"high\"\n    }\n  ],\n  \"extraction_notes\": \"Dose amounts not stated for either product.\"\n}",
+    "error": null
+  },
+  "extraction_notes": "Dose amounts not stated for either product."
+}

@@ -1,0 +1,95 @@
+{
+  "products": [
+    "tylenol"
+  ],
+  "output": {
+    "risk_level": "none",
+    "risk_summary": "No safety concerns identified with Tylenol at your current dose. You're well within safe limits for acetaminophen.",
+    "details": [],
+    "what_to_do": "You can continue taking Tylenol as directed. Your current dose of 1000mg per day is one-third of the maximum safe daily limit of 3000mg. To stay safe: don't exceed 3000mg of acetaminophen total per day from all sources, space doses at least 4-6 hours apart, and be aware that many cold, flu, and pain medicines also contain acetaminophen. Always read labels carefully to avoid accidentally doubling up. If you're taking Tylenol for more than 10 days for pain or 3 days for fever, or if your symptoms aren't improving, contact your healthcare provider.",
+    "see_pharmacist": false
+  },
+  "sources": [
+    {
+      "name": "RxNorm: 'tylenol' (RxCUI 202433)",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/allrelated.json"
+    },
+    {
+      "name": "OpenFDA label: 'tylenol'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"tylenol\"&limit=1"
+    },
+    {
+      "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+    }
+  ],
+  "tool_data": {
+    "resolved": [
+      {
+        "product": "tylenol",
+        "data": [
+          {
+            "ingredient": "acetaminophen",
+            "amount_per_dose_mg": 500.0,
+            "rxcui": "161"
+          }
+        ],
+        "sources": [
+          {
+            "name": "RxNorm: 'tylenol' (RxCUI 202433)",
+            "url": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/allrelated.json"
+          },
+          {
+            "name": "OpenFDA label: 'tylenol'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"tylenol\"&limit=1"
+          }
+        ],
+        "warning": null
+      }
+    ],
+    "interactions": {
+      "data": [],
+      "sources": [],
+      "warning": "Need at least two ingredients to check interactions."
+    },
+    "dose_check": {
+      "data": [
+        {
+          "ingredient": "acetaminophen",
+          "total_mg_per_day": 1000.0,
+          "safe_limit_mg": 3000,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "tylenol"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+          "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+        }
+      ],
+      "warning": null
+    }
+  },
+  "error": null,
+  "extracted": {
+    "products": [
+      {
+        "name": "tylenol",
+        "is_otc": true,
+        "dose_value": null,
+        "dose_unit": null,
+        "frequency_per_day": 2,
+        "duration_days": 3,
+        "confidence": "medium"
+      }
+    ],
+    "substances": [],
+    "extraction_notes": "Dose per administration not stated. Question format asking about safety.",
+    "raw_response": "{\n  \"products\": [\n    {\n      \"name\": \"tylenol\",\n      \"is_otc\": true,\n      \"dose_value\": null,\n      \"dose_unit\": null,\n      \"frequency_per_day\": 2,\n      \"duration_days\": 3,\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"substances\": [],\n  \"extraction_notes\": \"Dose per administration not stated. Question format asking about safety.\"\n}",
+    "error": null
+  },
+  "extraction_notes": "Dose per administration not stated. Question format asking about safety."
+}

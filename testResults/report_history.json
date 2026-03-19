@@ -1,0 +1,20 @@
+{
+  "products": [],
+  "output": {
+    "risk_level": "none",
+    "risk_summary": "No medications were detected in your message.",
+    "details": [],
+    "what_to_do": "If you meant to ask about a specific medication, try naming it directly \u2014 for example: 'I take Advil and Tylenol together.'",
+    "see_pharmacist": false
+  },
+  "sources": [],
+  "tool_data": {},
+  "extracted": {
+    "products": [],
+    "substances": [],
+    "extraction_notes": "Input appears to be a single word 'history' with no medication information.",
+    "raw_response": "{\n  \"products\": [],\n  \"substances\": [],\n  \"extraction_notes\": \"Input appears to be a single word 'history' with no medication information.\"\n}",
+    "error": null
+  },
+  "error": null
+}

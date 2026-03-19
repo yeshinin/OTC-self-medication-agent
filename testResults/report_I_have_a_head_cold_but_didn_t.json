@@ -1,0 +1,127 @@
+{
+  "products": [
+    "Sudafed",
+    "pre-workout"
+  ],
+  "output": {
+    "risk_level": "moderate",
+    "risk_summary": "Combining Sudafed with pre-workout supplements carries moderate risk because both typically contain stimulants that can dangerously raise heart rate and blood pressure.",
+    "details": [
+      {
+        "finding": "Stimulant stacking from pseudoephedrine plus pre-workout ingredients",
+        "explanation": "Sudafed contains pseudoephedrine, a decongestant that acts as a stimulant. Most pre-workout supplements contain caffeine (often 200-400mg per serving) and other stimulants like synephrine or yohimbine. Taking these together can cause excessive stimulation, leading to rapid heart rate, dangerous blood pressure spikes, jitteriness, anxiety, and in serious cases, heart rhythm problems. The risk is highest during or after exercise when your cardiovascular system is already working hard.",
+        "source": "OpenFDA label data for pseudoephedrine"
+      },
+      {
+        "finding": "Unknown exact ingredients in pre-workout product",
+        "explanation": "Pre-workout supplements vary widely in their formulas and often contain proprietary blends that don't list exact amounts of stimulants. Without knowing the specific product name and ingredients, we cannot check for additional direct drug interactions or calculate your total stimulant dose. Many pre-workouts also contain ingredients that affect blood pressure or heart rate beyond just caffeine.",
+        "source": "RxNorm and OpenFDA ingredient resolution"
+      }
+    ],
+    "what_to_do": "Do not take Sudafed and pre-workout supplements on the same day, especially not within several hours of each other. If you need the pre-workout for exercise, skip the Sudafed that day and use a non-stimulant decongestant instead\u2014try products containing only guaifenesin (like plain Mucinex) or saline nasal spray. If congestion is severe and you must use Sudafed, skip your pre-workout entirely and avoid intense exercise for at least 4-6 hours after taking it. Check your pre-workout label for the caffeine content and other stimulants\u2014if it contains more than 200mg caffeine per serving or lists synephrine, yohimbine, or DMAA, the interaction risk with Sudafed is even higher.",
+    "see_pharmacist": true
+  },
+  "sources": [
+    {
+      "name": "RxNorm: 'Sudafed' (RxCUI 203302)",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/203302/allrelated.json"
+    },
+    {
+      "name": "OpenFDA label: 'Sudafed'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Sudafed\"&limit=1"
+    },
+    {
+      "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+    }
+  ],
+  "tool_data": {
+    "resolved": [
+      {
+        "product": "Sudafed",
+        "data": [
+          {
+            "ingredient": "pseudoephedrine",
+            "amount_per_dose_mg": null,
+            "rxcui": "8896"
+          },
+          {
+            "ingredient": "pseudoephedrine",
+            "amount_per_dose_mg": null,
+            "rxcui": "91168"
+          }
+        ],
+        "sources": [
+          {
+            "name": "RxNorm: 'Sudafed' (RxCUI 203302)",
+            "url": "https://rxnav.nlm.nih.gov/REST/rxcui/203302/allrelated.json"
+          },
+          {
+            "name": "OpenFDA label: 'Sudafed'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Sudafed\"&limit=1"
+          }
+        ],
+        "warning": null
+      },
+      {
+        "product": "pre-workout",
+        "data": [],
+        "sources": [],
+        "warning": "No data found for 'pre-workout' in RxNorm or OpenFDA. Check spelling or try the generic ingredient name."
+      }
+    ],
+    "interactions": {
+      "data": [],
+      "sources": [],
+      "warning": "Need at least two ingredients to check interactions."
+    },
+    "dose_check": {
+      "data": [
+        {
+          "ingredient": "pseudoephedrine",
+          "total_mg_per_day": 0.0,
+          "safe_limit_mg": 240,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "Sudafed"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+          "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+        }
+      ],
+      "warning": "Could not determine per-dose amounts for: pseudoephedrine. Manual dose check recommended."
+    }
+  },
+  "error": null,
+  "extracted": {
+    "products": [
+      {
+        "name": "Sudafed",
+        "is_otc": true,
+        "dose_value": null,
+        "dose_unit": null,
+        "frequency_per_day": null,
+        "duration_days": null,
+        "confidence": "medium"
+      },
+      {
+        "name": "pre-workout",
+        "is_otc": true,
+        "dose_value": 300,
+        "dose_unit": "mg",
+        "frequency_per_day": null,
+        "duration_days": null,
+        "confidence": "high"
+      }
+    ],
+    "substances": [],
+    "extraction_notes": "Sudafed dose not stated. User specifies 'real kind from behind the counter' suggesting pseudoephedrine. Pre-workout caffeine content explicitly stated as 300mg. Single-dose event, not regular frequency.",
+    "raw_response": "{\n  \"products\": [\n    {\n      \"name\": \"Sudafed\",\n      \"is_otc\": true,\n      \"dose_value\": null,\n      \"dose_unit\": null,\n      \"frequency_per_day\": null,\n      \"duration_days\": null,\n      \"confidence\": \"medium\"\n    },\n    {\n      \"name\": \"pre-workout\",\n      \"is_otc\": true,\n      \"dose_value\": 300,\n      \"dose_unit\": \"mg\",\n      \"frequency_per_day\": null,\n      \"duration_days\": null,\n      \"confidence\": \"high\"\n    }\n  ],\n  \"substances\": [],\n  \"extraction_notes\": \"Sudafed dose not stated. User specifies 'real kind from behind the counter' suggesting pseudoephedrine. Pre-workout caffeine content explicitly stated as 300mg. Single-dose event, not regular frequency.\"\n}",
+    "error": null
+  },
+  "extraction_notes": "Sudafed dose not stated. User specifies 'real kind from behind the counter' suggesting pseudoephedrine. Pre-workout caffeine content explicitly stated as 300mg. Single-dose event, not regular frequency."
+}

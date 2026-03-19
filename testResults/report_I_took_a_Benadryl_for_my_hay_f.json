@@ -1,0 +1,208 @@
+{
+  "products": [
+    "Benadryl",
+    "Dramamine",
+    "ZzzQuil"
+  ],
+  "output": {
+    "risk_level": "high",
+    "risk_summary": "All three products contain the same type of sedating antihistamine, which significantly increases your risk of dangerous drowsiness, confusion, and falls. Combining them is not safe.",
+    "details": [
+      {
+        "finding": "Excessive sedating antihistamine exposure from combining multiple products",
+        "explanation": "Benadryl and ZzzQuil both contain diphenhydramine, and Dramamine contains dimenhydrinate, which your body converts into diphenhydramine. Taking all three means you're getting the same drowsiness-causing drug from three different bottles. This dramatically increases your risk of extreme sleepiness, difficulty thinking clearly, dangerous falls (especially for older adults), difficulty urinating, dry mouth, blurred vision, and next-day impairment. In severe cases, this can cause confusion, rapid heartbeat, or difficulty breathing.",
+        "source": "Resolved ingredients analysis and dose accumulation check"
+      },
+      {
+        "finding": "Uncertainty about total dimenhydrinate dose",
+        "explanation": "We couldn't verify the exact amount of dimenhydrinate in your Dramamine, so your actual total dose of sedating antihistamines may be even higher than calculated. This makes the combination even more unpredictable and potentially dangerous.",
+        "source": "Dose accumulation analysis"
+      }
+    ],
+    "what_to_do": "Choose only one of these products and use it as directed on the label \u2014 never combine them. If you need help with allergies, use Benadryl alone (follow package directions, typically 25-50mg every 4-6 hours, not exceeding 300mg in 24 hours). If you need motion sickness relief, use Dramamine alone. If you need sleep help, use ZzzQuil alone. If one product isn't working well enough, do not add another sedating antihistamine. Instead, talk to a pharmacist about a different type of medication that works through a different mechanism. Avoid driving or operating machinery for at least 6-8 hours after taking any of these products.",
+    "see_pharmacist": true
+  },
+  "sources": [
+    {
+      "name": "RxNorm: 'Benadryl' (RxCUI 203457)",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/203457/allrelated.json"
+    },
+    {
+      "name": "OpenFDA label: 'Benadryl'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Benadryl\"&limit=1"
+    },
+    {
+      "name": "RxNorm: 'Dramamine' (RxCUI 151666)",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/151666/allrelated.json"
+    },
+    {
+      "name": "OpenFDA label: 'Dramamine'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Dramamine\"&limit=1"
+    },
+    {
+      "name": "RxNorm: 'ZzzQuil' (RxCUI 1233547)",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1233547/allrelated.json"
+    },
+    {
+      "name": "OpenFDA label: 'ZzzQuil'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"ZzzQuil\"&limit=1"
+    },
+    {
+      "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+    }
+  ],
+  "tool_data": {
+    "resolved": [
+      {
+        "product": "Benadryl",
+        "data": [
+          {
+            "ingredient": "diphenhydramine",
+            "amount_per_dose_mg": 25.0,
+            "rxcui": "3498",
+            "note": "estimated from default OTC strength"
+          },
+          {
+            "ingredient": "diphenhydramine",
+            "amount_per_dose_mg": 25.0,
+            "rxcui": "1362",
+            "note": "estimated from default OTC strength"
+          }
+        ],
+        "sources": [
+          {
+            "name": "RxNorm: 'Benadryl' (RxCUI 203457)",
+            "url": "https://rxnav.nlm.nih.gov/REST/rxcui/203457/allrelated.json"
+          },
+          {
+            "name": "OpenFDA label: 'Benadryl'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Benadryl\"&limit=1"
+          }
+        ],
+        "warning": null
+      },
+      {
+        "product": "Dramamine",
+        "data": [
+          {
+            "ingredient": "dimenhydrinate",
+            "amount_per_dose_mg": null,
+            "rxcui": "3444"
+          }
+        ],
+        "sources": [
+          {
+            "name": "RxNorm: 'Dramamine' (RxCUI 151666)",
+            "url": "https://rxnav.nlm.nih.gov/REST/rxcui/151666/allrelated.json"
+          },
+          {
+            "name": "OpenFDA label: 'Dramamine'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Dramamine\"&limit=1"
+          }
+        ],
+        "warning": null
+      },
+      {
+        "product": "ZzzQuil",
+        "data": [
+          {
+            "ingredient": "diphenhydramine",
+            "amount_per_dose_mg": 25.0,
+            "rxcui": "3498",
+            "note": "estimated from default OTC strength"
+          },
+          {
+            "ingredient": "diphenhydramine",
+            "amount_per_dose_mg": 25.0,
+            "rxcui": "1362",
+            "note": "estimated from default OTC strength"
+          }
+        ],
+        "sources": [
+          {
+            "name": "RxNorm: 'ZzzQuil' (RxCUI 1233547)",
+            "url": "https://rxnav.nlm.nih.gov/REST/rxcui/1233547/allrelated.json"
+          },
+          {
+            "name": "OpenFDA label: 'ZzzQuil'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"ZzzQuil\"&limit=1"
+          }
+        ],
+        "warning": null
+      }
+    ],
+    "interactions": {
+      "data": [],
+      "sources": [],
+      "warning": "No documented interactions found between these ingredients. Absence of data does not confirm safety, especially for supplements."
+    },
+    "dose_check": {
+      "data": [
+        {
+          "ingredient": "dimenhydrinate",
+          "total_mg_per_day": 0.0,
+          "safe_limit_mg": null,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "Dramamine"
+          ]
+        },
+        {
+          "ingredient": "diphenhydramine",
+          "total_mg_per_day": 100.0,
+          "safe_limit_mg": 300,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "Benadryl",
+            "ZzzQuil"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+          "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+        }
+      ],
+      "warning": "Could not determine per-dose amounts for: dimenhydrinate. Manual dose check recommended."
+    }
+  },
+  "error": null,
+  "extracted": {
+    "products": [
+      {
+        "name": "Benadryl",
+        "is_otc": true,
+        "dose_value": 1,
+        "dose_unit": "tablet",
+        "frequency_per_day": 1,
+        "duration_days": null,
+        "confidence": "high"
+      },
+      {
+        "name": "Dramamine",
+        "is_otc": true,
+        "dose_value": null,
+        "dose_unit": null,
+        "frequency_per_day": 1,
+        "duration_days": null,
+        "confidence": "medium"
+      },
+      {
+        "name": "ZzzQuil",
+        "is_otc": true,
+        "dose_value": null,
+        "dose_unit": null,
+        "frequency_per_day": 1,
+        "duration_days": null,
+        "confidence": "high"
+      }
+    ],
+    "substances": [],
+    "extraction_notes": "Dramamine dose not specified. All products planned for different times of day (morning, later, tonight). User asking about safety/interaction but no clinical response provided per instructions.",
+    "raw_response": "{\n  \"products\": [\n    {\n      \"name\": \"Benadryl\",\n      \"is_otc\": true,\n      \"dose_value\": 1,\n      \"dose_unit\": \"tablet\",\n      \"frequency_per_day\": 1,\n      \"duration_days\": null,\n      \"confidence\": \"high\"\n    },\n    {\n      \"name\": \"Dramamine\",\n      \"is_otc\": true,\n      \"dose_value\": null,\n      \"dose_unit\": null,\n      \"frequency_per_day\": 1,\n      \"duration_days\": null,\n      \"confidence\": \"medium\"\n    },\n    {\n      \"name\": \"ZzzQuil\",\n      \"is_otc\": true,\n      \"dose_value\": null,\n      \"dose_unit\": null,\n      \"frequency_per_day\": 1,\n      \"duration_days\": null,\n      \"confidence\": \"high\"\n    }\n  ],\n  \"substances\": [],\n  \"extraction_notes\": \"Dramamine dose not specified. All products planned for different times of day (morning, later, tonight). User asking about safety/interaction but no clinical response provided per instructions.\"\n}",
+    "error": null
+  },
+  "extraction_notes": "Dramamine dose not specified. All products planned for different times of day (morning, later, tonight). User asking about safety/interaction but no clinical response provided per instructions."
+}

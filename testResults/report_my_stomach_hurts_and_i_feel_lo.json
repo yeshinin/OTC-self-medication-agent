@@ -1,0 +1,20 @@
+{
+  "products": [],
+  "output": {
+    "risk_level": "none",
+    "risk_summary": "No medications were detected in your message.",
+    "details": [],
+    "what_to_do": "If you meant to ask about a specific medication, try naming it directly \u2014 for example: 'I take Advil and Tylenol together.'",
+    "see_pharmacist": false
+  },
+  "sources": [],
+  "tool_data": {},
+  "extracted": {
+    "products": [],
+    "substances": [],
+    "extraction_notes": "No medications mentioned. Symptom and emotional state only.",
+    "raw_response": "{\n  \"products\": [],\n  \"substances\": [],\n  \"extraction_notes\": \"No medications mentioned. Symptom and emotional state only.\"\n}",
+    "error": null
+  },
+  "error": null
+}

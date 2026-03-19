@@ -1,0 +1,239 @@
+{
+  "products": [
+    "DayQuil",
+    "Tylenol Extra Strength",
+    "Theraflu",
+    "SSRI"
+  ],
+  "output": {
+    "risk_level": "moderate",
+    "risk_summary": "You're taking acetaminophen from two different products (Tylenol and Theraflu), which increases your risk of accidental overdose. Your current total is safe, but you need to track carefully to avoid liver damage.",
+    "details": [
+      {
+        "finding": "Acetaminophen appears in both Tylenol Extra Strength and Theraflu",
+        "explanation": "You're getting 500mg from Tylenol and 1000mg from Theraflu, totaling 1500mg per day. While this is still under the 3000mg daily limit for healthy adults, many people don't realize they're doubling up on the same ingredient. Taking more doses than planned, or adding another product with acetaminophen (like Excedrin, NyQuil, or many other cold medicines), could push you over the safe limit and cause serious liver damage. Acetaminophen overdose is one of the leading causes of emergency room visits.",
+        "source": "Dose accumulation analysis"
+      },
+      {
+        "finding": "Dextromethorphan appears in both DayQuil and Theraflu",
+        "explanation": "You're taking this cough suppressant from two sources, getting 15mg from DayQuil and 30mg from Theraflu (45mg total per day). This is well within the 120mg daily limit, but be aware you're getting it from multiple products. Taking more than recommended doses could cause dizziness, confusion, or dangerous interactions if you're on certain antidepressants.",
+        "source": "Dose accumulation analysis"
+      },
+      {
+        "finding": "SSRI information not analyzed",
+        "explanation": "You mentioned taking an SSRI (a type of antidepressant), but no specific drug name was provided. SSRIs can interact with dextromethorphan (found in both your DayQuil and Theraflu) and potentially cause a dangerous condition called serotonin syndrome, which includes symptoms like confusion, rapid heart rate, high fever, and muscle rigidity. This interaction wasn't checked because the specific SSRI wasn't identified.",
+        "source": "Ingredient resolution tool"
+      }
+    ],
+    "what_to_do": "First, identify your specific SSRI by name and check with your pharmacist whether it's safe to take with dextromethorphan\u2014this is important and shouldn't wait. Second, choose either Tylenol or Theraflu for pain and fever relief, not both at the same time. If you need both daytime cold relief and nighttime symptom control, consider using plain Tylenol (without other cold ingredients) for pain and fever, and save the combination cold medicines like DayQuil or Theraflu for when you specifically need the decongestant and cough suppressant. Keep a simple list on your phone of what you've taken each day, including the dose and time, so you don't accidentally exceed safe limits. Never take more than 3000mg of acetaminophen in 24 hours, and if you drink alcohol regularly, that limit should be even lower.",
+    "see_pharmacist": true
+  },
+  "sources": [
+    {
+      "name": "OpenFDA label: 'DayQuil'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"DayQuil\"&limit=1"
+    },
+    {
+      "name": "OpenFDA label: 'Tylenol Extra Strength'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Tylenol Extra Strength\"&limit=1"
+    },
+    {
+      "name": "OpenFDA label: 'Theraflu'",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Theraflu\"&limit=1"
+    },
+    {
+      "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+    }
+  ],
+  "tool_data": {
+    "resolved": [
+      {
+        "product": "DayQuil",
+        "data": [
+          {
+            "ingredient": "chlorpheniramine",
+            "amount_per_dose_mg": 2.0,
+            "rxcui": null
+          },
+          {
+            "ingredient": "dextromethorphan",
+            "amount_per_dose_mg": 15.0,
+            "rxcui": null
+          },
+          {
+            "ingredient": "guaifenesin",
+            "amount_per_dose_mg": 100.0,
+            "rxcui": null
+          },
+          {
+            "ingredient": "phenylephrine",
+            "amount_per_dose_mg": 5.0,
+            "rxcui": null
+          }
+        ],
+        "sources": [
+          {
+            "name": "OpenFDA label: 'DayQuil'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"DayQuil\"&limit=1"
+          }
+        ],
+        "warning": null
+      },
+      {
+        "product": "Tylenol Extra Strength",
+        "data": [
+          {
+            "ingredient": "acetaminophen",
+            "amount_per_dose_mg": 500.0,
+            "rxcui": null
+          }
+        ],
+        "sources": [
+          {
+            "name": "OpenFDA label: 'Tylenol Extra Strength'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Tylenol Extra Strength\"&limit=1"
+          }
+        ],
+        "warning": null
+      },
+      {
+        "product": "Theraflu",
+        "data": [
+          {
+            "ingredient": "acetaminophen",
+            "amount_per_dose_mg": 1000.0,
+            "rxcui": null
+          },
+          {
+            "ingredient": "dextromethorphan",
+            "amount_per_dose_mg": 30.0,
+            "rxcui": null
+          }
+        ],
+        "sources": [
+          {
+            "name": "OpenFDA label: 'Theraflu'",
+            "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:\"Theraflu\"&limit=1"
+          }
+        ],
+        "warning": null
+      },
+      {
+        "product": "SSRI",
+        "data": [],
+        "sources": [],
+        "warning": "No data found for 'SSRI' in RxNorm or OpenFDA. Check spelling or try the generic ingredient name."
+      }
+    ],
+    "interactions": {
+      "data": [],
+      "sources": [],
+      "warning": "No documented interactions found between these ingredients. Absence of data does not confirm safety, especially for supplements."
+    },
+    "dose_check": {
+      "data": [
+        {
+          "ingredient": "acetaminophen",
+          "total_mg_per_day": 1500.0,
+          "safe_limit_mg": 3000,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "Tylenol Extra Strength",
+            "Theraflu"
+          ]
+        },
+        {
+          "ingredient": "chlorpheniramine",
+          "total_mg_per_day": 2.0,
+          "safe_limit_mg": null,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "DayQuil"
+          ]
+        },
+        {
+          "ingredient": "dextromethorphan",
+          "total_mg_per_day": 45.0,
+          "safe_limit_mg": 120,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "DayQuil",
+            "Theraflu"
+          ]
+        },
+        {
+          "ingredient": "guaifenesin",
+          "total_mg_per_day": 100.0,
+          "safe_limit_mg": 2400,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "DayQuil"
+          ]
+        },
+        {
+          "ingredient": "phenylephrine",
+          "total_mg_per_day": 5.0,
+          "safe_limit_mg": 60,
+          "exceeds_limit": false,
+          "contributing_products": [
+            "DayQuil"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "FDA OTC safe daily dose limits (monograph + label guidance)",
+          "url": "https://www.fda.gov/drugs/drug-safety-and-availability/questions-and-answers-information-acetaminophen-prescription-drug-products-required-liver-warning"
+        }
+      ],
+      "warning": null
+    }
+  },
+  "error": null,
+  "extracted": {
+    "products": [
+      {
+        "name": "DayQuil",
+        "is_otc": true,
+        "dose_value": 2,
+        "dose_unit": "capsule",
+        "frequency_per_day": null,
+        "duration_days": null,
+        "confidence": "high"
+      },
+      {
+        "name": "Tylenol Extra Strength",
+        "is_otc": true,
+        "dose_value": 2,
+        "dose_unit": "tablet",
+        "frequency_per_day": null,
+        "duration_days": null,
+        "confidence": "high"
+      },
+      {
+        "name": "Theraflu",
+        "is_otc": true,
+        "dose_value": 1,
+        "dose_unit": "packet",
+        "frequency_per_day": null,
+        "duration_days": null,
+        "confidence": "high"
+      },
+      {
+        "name": "SSRI",
+        "is_otc": false,
+        "dose_value": null,
+        "dose_unit": null,
+        "frequency_per_day": null,
+        "duration_days": null,
+        "confidence": "medium"
+      }
+    ],
+    "substances": [],
+    "extraction_notes": "All three OTC products taken within 4-hour window. Specific SSRI type not stated. Frequency unclear - appears to be single doses taken today rather than regular schedule.",
+    "raw_response": "{\n  \"products\": [\n    {\n      \"name\": \"DayQuil\",\n      \"is_otc\": true,\n      \"dose_value\": 2,\n      \"dose_unit\": \"capsule\",\n      \"frequency_per_day\": null,\n      \"duration_days\": null,\n      \"confidence\": \"high\"\n    },\n    {\n      \"name\": \"Tylenol Extra Strength\",\n      \"is_otc\": true,\n      \"dose_value\": 2,\n      \"dose_unit\": \"tablet\",\n      \"frequency_per_day\": null,\n      \"duration_days\": null,\n      \"confidence\": \"high\"\n    },\n    {\n      \"name\": \"Theraflu\",\n      \"is_otc\": true,\n      \"dose_value\": 1,\n      \"dose_unit\": \"packet\",\n      \"frequency_per_day\": null,\n      \"duration_days\": null,\n      \"confidence\": \"high\"\n    },\n    {\n      \"name\": \"SSRI\",\n      \"is_otc\": false,\n      \"dose_value\": null,\n      \"dose_unit\": null,\n      \"frequency_per_day\": null,\n      \"duration_days\": null,\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"substances\": [],\n  \"extraction_notes\": \"All three OTC products taken within 4-hour window. Specific SSRI type not stated. Frequency unclear - appears to be single doses taken today rather than regular schedule.\"\n}",
+    "error": null
+  },
+  "extraction_notes": "All three OTC products taken within 4-hour window. Specific SSRI type not stated. Frequency unclear - appears to be single doses taken today rather than regular schedule."
+}
