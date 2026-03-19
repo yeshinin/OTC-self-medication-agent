@@ -463,7 +463,7 @@
   <!-- Main content -->
   <main>
     <div class="input-area">
-      <div class="input-label">Describe your medications or ask a question</div>
+      <div class="input-label">Describe your medications, preferably with doses, so we can help you see potential risks and interactions (esp. OTC meds)</div>
       <textarea id="query" placeholder="e.g. I take NyQuil every night and Tylenol during the day, and I drink wine most evenings…"></textarea>
       <div class="input-footer">
         <div class="loading" id="loading">
@@ -519,8 +519,8 @@
         <ul class="sources-list" id="sources-list"></ul>
       </div>
 
-      <button class="download-btn" onclick="downloadReport()">
-        ↓ Download report as JSON
+      <button class="download-btn" onclick="downloadPDF()">
+        ↓ Download report as PDF
       </button>
 
     </div><!-- /report -->
@@ -529,7 +529,7 @@
 </div><!-- /shell -->
 
 <script>
-  const API = 'http://localhost:5000';
+  const API = 'http://localhost:8080';
   let lastReport = null;
   let currentQuery = '';
 
@@ -549,6 +549,7 @@
     'Extracting medications…',
     'Resolving ingredients…',
     'Checking interactions…',
+    'Reasoning pharmacologically…',
     'Synthesizing risk report…',
   ];
 
@@ -704,17 +705,135 @@
       .replace(/"/g, '&quot;');
   }
 
-  function downloadReport() {
+  function downloadPDF() {
     if (!lastReport) return;
-    const blob = new Blob([JSON.stringify({
-      query:  currentQuery,
-      report: lastReport,
-      timestamp: new Date().toISOString(),
-    }, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `otc-report-${Date.now()}.json`;
-    a.click();
+
+    const data = lastReport;
+    const risk = (data.risk_level || 'none').toUpperCase();
+    const cfg  = RISK_CONFIG[data.risk_level] || RISK_CONFIG.none;
+    const date = new Date().toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    // Build detail rows
+    const detailRows = (data.details || []).map((d, i) => `
+      <div style="margin-bottom:18px;padding:14px 16px;background:#f5f2eb;
+                  border-radius:6px;border:1px solid #ddd8cc;">
+        <div style="font-weight:600;font-size:14px;margin-bottom:6px;">
+          ${i + 1}. ${d.finding}
+        </div>
+        <div style="font-size:13px;color:#4a4a44;line-height:1.6;">
+          ${d.explanation}
+        </div>
+        <div style="font-size:11px;color:#8a8a80;margin-top:8px;
+                    font-family:monospace;">
+          Source: ${d.source}
+        </div>
+      </div>`).join('');
+
+    // Build source rows
+    const sourceRows = (data.sources || []).map(s => `
+      <div style="padding:6px 0;border-bottom:1px solid #e0dbd0;font-size:12px;">
+        <span style="font-weight:500;color:#4a4a44;">${s.name}</span>
+        ${s.url ? `<br><span style="font-family:monospace;color:#8a8a80;
+                    word-break:break-all;">${s.url}</span>` : ''}
+      </div>`).join('');
+
+    // Risk colour
+    const riskColor = {
+      high: '#c0392b', moderate: '#d4820a',
+      low: '#2d7a4f', none: '#2d7a4f'
+    }[data.risk_level] || '#4a4a44';
+
+    const pharmacistBlock = data.see_pharmacist ? `
+      <div style="background:#eef4fb;border:1px solid #b5d4f4;border-radius:6px;
+                  padding:14px 16px;margin:20px 0;font-size:13px;color:#1a5a8a;">
+        <strong>⚕ Speak with a pharmacist or doctor</strong> before continuing
+        this combination.
+      </div>` : '';
+
+    const html = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OTC Risk Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&family=DM+Mono&display=swap');
+    body { font-family:'DM Sans',sans-serif; color:#1a1a18;
+           background:#fff; margin:0; padding:40px 48px; font-size:14px; }
+    @media print {
+      body { padding: 20px 32px; }
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div style="border-bottom:2px solid #1a1a18;padding-bottom:16px;margin-bottom:24px;">
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1a1a18;">
+      OTC<span style="color:#c0392b;font-style:italic;">Safe</span>
+    </div>
+    <div style="font-size:11px;color:#8a8a80;text-transform:uppercase;
+                letter-spacing:.08em;margin-top:2px;">
+      Medication Risk Report · ${date}
+    </div>
+  </div>
+
+  <div style="background:#f5f2eb;border-radius:8px;padding:12px 16px;
+              margin-bottom:20px;font-size:12px;color:#8a8a80;">
+    <strong style="color:#4a4a44;">Query:</strong> ${currentQuery}
+  </div>
+
+  <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;">
+    <div style="background:${riskColor}18;color:${riskColor};padding:6px 14px;
+                border-radius:20px;font-size:13px;font-weight:600;
+                white-space:nowrap;flex-shrink:0;">
+      ${cfg.icon} ${cfg.label}
+    </div>
+    <div style="font-family:'DM Serif Display',serif;font-size:20px;
+                line-height:1.4;color:#1a1a18;">
+      ${data.risk_summary}
+    </div>
+  </div>
+
+  ${data.details && data.details.length ? `
+  <div style="border-top:1px solid #ddd8cc;padding-top:18px;margin-top:18px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;
+                color:#8a8a80;margin-bottom:12px;font-weight:500;">Risk details</div>
+    ${detailRows}
+  </div>` : ''}
+
+  <div style="border-top:1px solid #ddd8cc;padding-top:18px;margin-top:18px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;
+                color:#8a8a80;margin-bottom:12px;font-weight:500;">What to do</div>
+    <div style="font-size:14px;line-height:1.7;color:#1a1a18;">
+      ${data.what_to_do}
+    </div>
+  </div>
+
+  ${pharmacistBlock}
+
+  ${data.sources && data.sources.length ? `
+  <div style="border-top:1px solid #ddd8cc;padding-top:18px;margin-top:18px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;
+                color:#8a8a80;margin-bottom:10px;font-weight:500;">Sources</div>
+    ${sourceRows}
+  </div>` : ''}
+
+  <div style="margin-top:32px;padding-top:16px;border-top:1px solid #ddd8cc;
+              font-size:11px;color:#8a8a80;line-height:1.6;">
+    Generated by OTCSafe · Phase 1 Research Prototype · US medications only.<br>
+    For informational purposes only. Not medical advice. Always consult a
+    licensed pharmacist or physician before making medication decisions.
+  </div>
+
+  <script class="no-print">window.onload = () => window.print();<\/script>
+</body>
+</html>`;
+
+    // Open print window
+    const win = window.open('', '_blank');
+    win.document.write(html);
+    win.document.close();
   }
 </script>
 </body>

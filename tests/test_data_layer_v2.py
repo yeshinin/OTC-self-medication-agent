@@ -8,7 +8,6 @@ Or add to top of this file:
     import sys, os
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 """
-
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
@@ -18,7 +17,6 @@ from data_layer import (
     resolve_brand_to_ingredients,
     get_interactions,
     check_dose_accumulation,
-    _check_hardcoded_interactions,
 )
 
 SEV = {"high": "🔴", "moderate": "🟡", "low": "🟢", "unknown": "⚪"}
@@ -108,21 +106,11 @@ def run_tool2_tests(resolved):
         combo_results.append({"label": combo["label"], "ok": ok, "found": found})
         time.sleep(0.1)
 
-    # Hardcoded check on full pool — fast, no API calls
-    all_ings = list({
-        i["ingredient"]
-        for r in resolved
-        for i in r.get("data", [])
-        if i.get("ingredient") and " / " not in i.get("ingredient","")
-    })
-    print(f"\n  Full ingredient pool ({len(all_ings)} ingredients — hardcoded check only)")
-    hits = _check_hardcoded_interactions(all_ings + ["ethanol"])
-    print(f"  Hardcoded interactions found: {len(hits)}")
-    for ix in hits:
-        print(f"    {SEV.get(ix['severity'],'⚪')} [{ix['severity']}] "
-              f"{ix['ingredient_a']} + {ix['ingredient_b']}")
+    # Full pool note — LLM reasoning now handles this in synthesis_layer
+    print(f"\n  Note: broader interaction reasoning (CYP450, serotonin syndrome,")
+    print(f"  stimulant stacking etc.) is handled by LLM in synthesis_layer.py")
 
-    return {"combo_tests": combo_results, "full_pool": hits}
+    return {"combo_tests": combo_results, "full_pool": []}
 
 
 def run_tool3_tests(resolved):

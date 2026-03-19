@@ -402,11 +402,11 @@ def get_interactions(ingredient_list: list[str]) -> dict:
 
     Sources used:
       - OpenFDA drug label: warnings + drug_interactions sections
-        (most reliable for OTC-specific language)
+      - LLM pharmacological reasoning (in synthesis_layer.run_pipeline)
+        catches interactions that label text searches miss — serotonin
+        syndrome, CYP450 interactions, stimulant stacking, etc.
 
-    Note: DrugBank interaction API requires a paid key for production use.
-    For Phase 1 we use OpenFDA label text, which covers the clinically
-    important OTC interactions well. DrugBank can be wired in Phase 2.
+    Note: DrugBank can be wired in Phase 2 for richer structured data.
 
     Returns:
       {
@@ -457,25 +457,6 @@ def get_interactions(ingredient_list: list[str]) -> dict:
             })
         time.sleep(0.07)   # stay under 240 req/min
 
-    # Flag known high-risk OTC combos not always in label text
-    hardcoded = _check_hardcoded_interactions(unique)
-    for hc in hardcoded:
-        # Add only if not already found via FDA query
-        already = any(
-            (i["ingredient_a"] == hc["ingredient_a"] and
-             i["ingredient_b"] == hc["ingredient_b"])
-            for i in interactions
-        )
-        if not already:
-            interactions.append(hc)
-            sources.append({
-                "name": (
-                    f"FDA OTC monograph / clinical literature: "
-                    f"{hc['ingredient_a']} + {hc['ingredient_b']}"
-                ),
-                "url": "https://www.fda.gov/drugs/drug-interactions-labeling"
-            })
-
     if not interactions:
         warnings_list.append(
             "No documented interactions found between these ingredients. "
@@ -525,97 +506,6 @@ def _openfda_check_interaction_pair(ing_a: str, ing_b: str) -> dict | None:
 
     except Exception:
         return None
-
-
-def _check_hardcoded_interactions(ingredients: list[str]) -> list[dict]:
-    """
-    High-priority OTC interaction pairs that are clinically important but
-    may not always surface cleanly from label text searches.
-    Curated from FDA monographs and clinical pharmacology references.
-    """
-    known = [
-        {
-            "a": "acetaminophen", "b": "ethanol",
-            "severity": "high",
-            "description": (
-                "Chronic alcohol use (3+ drinks/day) combined with acetaminophen "
-                "significantly increases risk of hepatotoxicity. FDA requires "
-                "alcohol warning on all acetaminophen OTC labels."
-            ),
-            "management": "Avoid acetaminophen or limit to <2g/day if drinking regularly."
-        },
-        {
-            "a": "ibuprofen", "b": "aspirin",
-            "severity": "moderate",
-            "description": (
-                "Ibuprofen can interfere with aspirin's antiplatelet effect when "
-                "taken within 30 minutes before or 8 hours after aspirin. "
-                "Both increase GI bleeding risk."
-            ),
-            "management": "Take aspirin at least 30 min before ibuprofen. Consider alternatives."
-        },
-        {
-            "a": "ibuprofen", "b": "naproxen sodium",
-            "severity": "high",
-            "description": (
-                "Two NSAIDs taken together do not provide additional pain relief "
-                "but significantly increase risk of GI ulcers, bleeding, and "
-                "kidney damage."
-            ),
-            "management": "Never combine two NSAIDs. Use one or the other."
-        },
-        {
-            "a": "diphenhydramine", "b": "ethanol",
-            "severity": "high",
-            "description": (
-                "Diphenhydramine (found in Benadryl, NyQuil, ZzzQuil, many sleep aids) "
-                "combined with alcohol causes additive CNS depression: extreme drowsiness, "
-                "impaired coordination, risk of respiratory depression."
-            ),
-            "management": "Avoid alcohol entirely when taking diphenhydramine."
-        },
-        {
-            "a": "aspirin", "b": "bismuth subsalicylate",
-            "severity": "moderate",
-            "description": (
-                "Bismuth subsalicylate (Pepto-Bismol) contains salicylate. "
-                "Combined with aspirin, total salicylate load can cause toxicity, "
-                "especially in children (Reye's syndrome risk)."
-            ),
-            "management": "Avoid combining. Do not give either to children with viral illness."
-        },
-        {
-            "a": "pseudoephedrine", "b": "phenylephrine",
-            "severity": "moderate",
-            "description": (
-                "Two decongestants combined increase cardiovascular risk: elevated "
-                "blood pressure, heart rate, and risk of arrhythmia."
-            ),
-            "management": "Use only one decongestant at a time."
-        },
-    ]
-
-    results = []
-    ing_set = set(ingredients)
-
-    for pair in known:
-        a_present = pair["a"] in ing_set
-        b_present = pair["b"] in ing_set
-
-        # Also check if alcohol/ethanol mentioned by user context
-        if pair["b"] == "ethanol":
-            b_present = b_present or "alcohol" in ing_set
-
-        if a_present and b_present:
-            results.append({
-                "ingredient_a": pair["a"],
-                "ingredient_b": pair["b"],
-                "severity":     pair["severity"],
-                "description":  pair["description"],
-                "management":   pair["management"],
-            })
-
-    return results
 
 
 def _infer_severity(text: str) -> str:
