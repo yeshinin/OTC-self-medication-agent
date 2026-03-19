@@ -28,14 +28,14 @@ app = Flask(__name__, static_folder=BASE_DIR, static_url_path='')
 CORS(app)
 
 
-'''@app.route("/")
-def index():
-    return send_from_directory(BASE_DIR, "index.html")'''
-
 @app.route("/")
 def index():
-    print(f"Looking for index.html in: {BASE_DIR}")
-    return send_from_directory(BASE_DIR, "index.html")
+    html_path = os.path.join(BASE_DIR, "index.html")
+    try:
+        with open(html_path, "r") as f:
+            return f.read(), 200, {"Content-Type": "text/html"}
+    except Exception as e:
+        return f"Error loading page: {e}", 500
 
 
 @app.route("/health", methods=["GET"])
@@ -77,5 +77,5 @@ def analyze():
 
 
 if __name__ == "__main__":
-    print("\n  OTC Agent running — open http://localhost:5000 in your browser.\n")
-    app.run(debug=True, port=5000)
+    print("\n  OTC Agent running — open http://localhost:8080 in your browser.\n")
+    app.run(debug=False, port=8080)
