@@ -281,6 +281,109 @@ def _build_tool_summary(
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# 3. LLM INTERACTION REASONING
+# ─────────────────────────────────────────────────────────────────────────────
+
+LLM_INTERACTION_PROMPT = """
+You are a clinical pharmacologist. Given a list of drug ingredients and
+substances, identify any clinically significant interactions that a patient
+should know about — including ones that may not appear in standard drug
+label databases.
+
+Focus especially on:
+- Pharmacokinetic interactions (CYP450 enzyme inhibition/induction)
+- Serotonin syndrome risk (SSRIs, SNRIs, tramadol, dextromethorphan,
+  St. John's Wort, triptans, linezolid, MAOIs)
+- CNS depression stacking (opioids, benzodiazepines, antihistamines,
+  alcohol, sleep aids, muscle relaxants)
+- Stimulant overload (pseudoephedrine, caffeine, ephedrine, synephrine,
+  yohimbine, DMAA)
+- Duplicate therapeutic class (two NSAIDs, two antihistamines,
+  two decongestants, two acetaminophen sources)
+- QT prolongation risk
+- Bleeding risk amplification
+- Hypertensive crisis risk (MAOIs + tyramine, stimulants + SSRIs)
+
+Return ONLY a JSON array. Each item must have:
+{
+  "ingredient_a": "string",
+  "ingredient_b": "string",
+  "severity": "high" | "moderate" | "low",
+  "mechanism": "one sentence — what is happening pharmacologically",
+  "description": "2-3 sentences plain English — what could happen to the patient",
+  "management": "one concrete sentence — what should they do",
+  "source": "LLM pharmacological reasoning"
+}
+
+Return an empty array [] if there are no clinically significant interactions.
+Return ONLY the JSON array, no preamble, no markdown fences.
+""".strip()
+
+
+def llm_interaction_reasoning(ingredient_list: list[str]) -> list[dict]:
+    """
+    Uses Claude to reason pharmacologically about a list of ingredients
+    and identify interactions that OpenFDA label searches may miss.
+
+    This catches:
+    - Serotonin syndrome (SSRI + dextromethorphan, St. John's Wort + SSRI)
+    - CYP450 interactions (St. John's Wort + many drugs)
+    - Stimulant stacking (pseudoephedrine + caffeine)
+    - Duplicate class (two antihistamines, two NSAIDs)
+    - CNS depression combinations
+
+    Returns a list of interaction dicts in the same format as
+    _check_hardcoded_interactions() so they merge cleanly.
+    """
+    if len(ingredient_list) < 2:
+        return []
+
+    user_msg = (
+        f"Ingredients and substances to check:\n"
+        f"{', '.join(ingredient_list)}\n\n"
+        f"Identify all clinically significant interactions between these."
+    )
+
+    try:
+        response = client.messages.create(
+            model=MODEL,
+            max_tokens=1500,
+            system=LLM_INTERACTION_PROMPT,
+            messages=[{"role": "user", "content": user_msg}]
+        )
+
+        raw = response.content[0].text.strip()
+
+        # Strip markdown fences if present
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+            raw = raw.strip()
+
+        parsed = json.loads(raw)
+
+        # Validate and normalise each interaction
+        validated = []
+        for ix in parsed:
+            if not all(k in ix for k in
+                       ["ingredient_a", "ingredient_b", "severity", "description"]):
+                continue
+            # Ensure management key exists
+            ix.setdefault("management",
+                          "Consult a pharmacist before combining these.")
+            ix.setdefault("source", "LLM pharmacological reasoning")
+            ix.setdefault("mechanism", "")
+            validated.append(ix)
+
+        return validated
+
+    except Exception as e:
+        print(f"  [LLM reasoning] Error: {e}")
+        return []
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # 3. FULL PIPELINE
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -330,12 +433,40 @@ def run_pipeline(
 
     interactions = get_interactions(all_ingredients)
 
+    # ── LLM interaction reasoning ─────────────────────────────────────────────
+    # Runs Claude pharmacological reasoning across all ingredients to catch
+    # interactions that OpenFDA label searches miss — serotonin syndrome,
+    # CYP450 induction, stimulant stacking, duplicate classes, etc.
+    print(f"  [3/4] LLM pharmacological reasoning...")
+    llm_interactions = llm_interaction_reasoning(all_ingredients)
+
+    # Merge LLM findings into interactions — deduplicate by ingredient pair
+    existing_pairs = {
+        (ix["ingredient_a"], ix["ingredient_b"])
+        for ix in interactions.get("data", [])
+    }
+    new_findings = []
+    for ix in llm_interactions:
+        pair     = (ix["ingredient_a"], ix["ingredient_b"])
+        pair_rev = (ix["ingredient_b"], ix["ingredient_a"])
+        if pair not in existing_pairs and pair_rev not in existing_pairs:
+            new_findings.append(ix)
+            existing_pairs.add(pair)
+
+    # Add LLM findings to interactions data and sources
+    if new_findings:
+        interactions["data"].extend(new_findings)
+        interactions["sources"].append({
+            "name": "LLM pharmacological reasoning (Claude)",
+            "url":  "https://www.anthropic.com"
+        })
+
     # ── Tool 3: dose accumulation ─────────────────────────────────────────────
-    print(f"  [3/3] Checking dose accumulation...")
+    print(f"  [4/5] Checking dose accumulation...")
     dose_check = check_dose_accumulation(resolved, doses_per_day)
 
     # ── Synthesis ─────────────────────────────────────────────────────────────
-    print(f"  [4/4] Synthesizing risk report...")
+    print(f"  [5/5] Synthesizing risk report...")
     synthesis = synthesize_risk_report(
         resolved_products=resolved,
         interactions=interactions,
@@ -349,9 +480,10 @@ def run_pipeline(
         "output":    synthesis.get("output"),
         "sources":   synthesis.get("sources"),
         "tool_data": {
-            "resolved":     resolved,
-            "interactions": interactions,
-            "dose_check":   dose_check,
+            "resolved":          resolved,
+            "interactions":      interactions,
+            "llm_interactions":  llm_interactions,
+            "dose_check":        dose_check,
         },
         "error": synthesis.get("error"),
     }
